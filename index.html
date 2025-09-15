@@ -162,34 +162,34 @@
                 </div>
             </div>
             <div class="categories-slider owl-carousel">
-                <div class="cs-item category-filter-item" data-filter=".wedding">
+                <a href="./portfolio.html?filter=wedding" class="cs-item">
                     <div class="cs-pic set-bg" data-setbg="img/categories/cat-1.jpg"></div>
                     <div class="cs-text">
                         <h4>Maternity</h4>
                         <span>150+ photos</span>
                     </div>
-                </div>
-                <div class="cs-item category-filter-item" data-filter=".fashion">
+                </a>
+                <a href="./portfolio.html?filter=fashion" class="cs-item">
                     <div class="cs-pic set-bg" data-setbg="img/categories/cat-2.jpg"></div>
                     <div class="cs-text">
                         <h4>Portrait</h4>
                         <span>200+ photos</span>
                     </div>
-                </div>
-                <div class="cs-item category-filter-item" data-filter=".lifestyle">
+                </a>
+                <a href="./portfolio.html?filter=lifestyle" class="cs-item">
                     <div class="cs-pic set-bg" data-setbg="img/categories/cat-3.jpg"></div>
                     <div class="cs-text">
                         <h4>Lifestyle</h4>
                         <span>180+ photos</span>
                     </div>
-                </div>
-                <div class="cs-item category-filter-item" data-filter=".videos">
+                </a>
+                <a href="./portfolio.html?filter=videos" class="cs-item">
                     <div class="cs-pic set-bg" data-setbg="img/categories/cat-4.jpg"></div>
                     <div class="cs-text">
                         <h4>Product</h4>
                         <span>120 pictures</span>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -205,11 +205,11 @@
                     </div>
                     <div class="filter-controls">
                         <ul>
-                            <li class="active" data-filter="*">All</li>
-                            <li data-filter=".fashion">Portrait</li>
-                            <li data-filter=".lifestyle">Lifestyle</li>
-                            <li data-filter=".wedding">Maternity</li>
-                            <li data-filter=".videos">Product</li>
+                            <li><a href="./portfolio.html">All</a></li>
+                            <li><a href="./portfolio.html?filter=fashion">Portrait</a></li>
+                            <li><a href="./portfolio.html?filter=lifestyle">Lifestyle</a></li>
+                            <li><a href="./portfolio.html?filter=wedding">Maternity</a></li>
+                            <li><a href="./portfolio.html?filter=videos">Product</a></li>
                         </ul>
                     </div>
                 </div>
@@ -316,7 +316,7 @@
                     <div class="fs-about">
                         <div class="fa-logo">
                             <a href="#">
-                                <img src="img/f-logo.png" alt="">
+                                <img src="img/Khrystyna%20Photos/horizontal%20logo.png" alt="">
                             </a>
                         </div>
                         <p>Passionate photographer with a love for capturing life's most precious moments. I work closely with clients to create beautiful, authentic images that preserve memories for generations.</p>
@@ -339,23 +339,6 @@
                             <li><a href="./portfolio.html">Portfolio</a></li>
                             <li><a href="./services.html">Services</a></li>
                         </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="fs-widget">
-                        <h5>Subscribe</h5>
-                        <p>Stay updated with my latest photography work and behind-the-scenes content by subscribing to my newsletter.</p>
-                        <div class="fw-subscribe">
-                            <form action="#">
-                                <input type="text" placeholder="Email">
-                                <button type="submit"><i class="fa fa-send"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="copyright-text">
-                        <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Khrystyna Skotte Photography</p>
                     </div>
                 </div>
             </div>
@@ -384,38 +367,9 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- Category Filter Click Functionality -->
+    <!-- Portfolio Item Click Functionality -->
     <script>
     $(document).ready(function() {
-        // Make category items clickable
-        $('.category-filter-item').on('click', function(e) {
-            e.preventDefault();
-
-            var filterData = $(this).attr('data-filter');
-
-            // Scroll to the portfolio section
-            $('html, body').animate({
-                scrollTop: $('.portfolio-section').offset().top - 100
-            }, 800);
-
-            // Wait for scroll to complete, then apply filter
-            setTimeout(function() {
-                // Remove active class from all filter controls
-                $('.filter-controls li').removeClass('active');
-
-                // Add active class to the matching filter button
-                $('.filter-controls li[data-filter="' + filterData + '"]').addClass('active');
-
-                // Apply the filter to isotope
-                $('.portfolio-filter').isotope({
-                    filter: filterData
-                });
-            }, 900);
-        });
-
-        // Add cursor pointer to indicate clickable
-        $('.category-filter-item').css('cursor', 'pointer');
-
         // Make entire portfolio item clickable for image popup
         $('.pf-item').on('click', function(e) {
             e.preventDefault();
