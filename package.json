@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Khrystyna Skotte Photography Website",
   "main": "index.html",
+  "type": "module",
   "dependencies": {
     "nodemailer": "^6.9.7"
   },

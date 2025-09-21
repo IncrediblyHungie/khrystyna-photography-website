@@ -117,10 +117,19 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Email sending error:', error);
+    console.error('Email sending error:', {
+      message: error.message,
+      stack: error.stack,
+      code: error.code,
+      response: error.response,
+      responseCode: error.responseCode,
+      command: error.command
+    });
+
     res.status(500).json({
       message: 'Failed to send email',
-      error: error.message
+      error: error.message,
+      details: process.env.NODE_ENV === 'development' ? error.stack : undefined
     });
   }
 }
