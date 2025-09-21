@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/contact-form.css" type="text/css">
 </head>
 
 <body>
@@ -158,6 +159,52 @@
     </section>
     <!-- Services Option Section End -->
 
+    <!-- Contact Form Section Begin -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact-form-container">
+                        <div class="contact-form-header">
+                            <h3>Book Your Photography Session</h3>
+                            <p>Interested in any of these services? Let's discuss your vision and create something amazing</p>
+                        </div>
+                        <div class="contact-form-content">
+                            <div class="contact-form">
+                                <form id="contactForm">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <input type="text" id="name" name="name" placeholder="Your Name *" required>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="email" id="email" name="email" placeholder="Your Email *" required>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <input type="tel" id="phone" name="phone" placeholder="Your Phone (optional)">
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <textarea id="message" name="message" placeholder="Which service interests you? Tell me about your needs... *" rows="6" required></textarea>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <button type="submit" class="site-btn" id="submitBtn">
+                                                <span class="btn-text">Send Message</span>
+                                                <span class="btn-loading" style="display: none;">
+                                                    <i class="fa fa-spinner fa-spin"></i> Sending...
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div id="formMessage" class="form-message" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Form Section End -->
+
     <!-- Footer Section Begin -->
     <footer class="footer-section">
         <div class="container">
@@ -218,6 +265,7 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/contact-form.js"></script>
 </body>
 
 </html>
