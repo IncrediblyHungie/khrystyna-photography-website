@@ -1,0 +1,17 @@
+{
+  "name": "khrystyna-photography-website",
+  "version": "1.0.0",
+  "description": "Khrystyna Skotte Photography Website",
+  "main": "index.html",
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'",
+    "start": "vercel dev"
+  },
+  "keywords": ["photography", "website", "portfolio"],
+  "author": "Khrystyna Skotte",
+  "license": "MIT"
+}
