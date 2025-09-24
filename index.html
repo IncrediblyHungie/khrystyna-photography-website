@@ -529,10 +529,12 @@
 
     /* About image - Mobile first (iPhone optimized) */
     .about-pic.set-bg[data-setbg*="KhrystynaHome"] {
-        background-position: center 30% !important;
-        background-size: cover !important;
-        min-height: 200px !important;
-        max-height: 250px !important;
+        background-position: center center !important;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        background-color: #f8f9fa !important;
+        min-height: 250px !important;
+        max-height: 300px !important;
         width: 100%;
     }
 
@@ -546,24 +548,24 @@
     @media (min-width: 375px) {
         .about-grid {
             grid-template-columns: 40% 60%;
-            min-height: 300px;
+            min-height: 350px;
         }
 
         .about-pic.set-bg[data-setbg*="KhrystynaHome"] {
-            min-height: 300px !important;
-            max-height: 300px !important;
+            min-height: 350px !important;
+            max-height: 400px !important;
         }
     }
 
     /* Large mobile devices - iPhone Pro, etc. */
     @media (min-width: 428px) {
         .about-grid {
-            min-height: 350px;
+            min-height: 400px;
         }
 
         .about-pic.set-bg[data-setbg*="KhrystynaHome"] {
-            min-height: 350px !important;
-            max-height: 350px !important;
+            min-height: 400px !important;
+            max-height: 450px !important;
         }
 
         .about-text {
@@ -575,13 +577,12 @@
     @media (min-width: 768px) {
         .about-grid {
             grid-template-columns: 50% 50%;
-            min-height: 500px;
+            min-height: 550px;
         }
 
         .about-pic.set-bg[data-setbg*="KhrystynaHome"] {
-            min-height: 500px !important;
-            max-height: 500px !important;
-            background-position: center 20% !important;
+            min-height: 550px !important;
+            max-height: 600px !important;
         }
 
         .about-text {
@@ -592,13 +593,12 @@
     /* Desktop devices */
     @media (min-width: 1024px) {
         .about-grid {
-            min-height: 600px;
+            min-height: 650px;
         }
 
         .about-pic.set-bg[data-setbg*="KhrystynaHome"] {
-            min-height: 600px !important;
-            max-height: 600px !important;
-            background-position: center top !important;
+            min-height: 650px !important;
+            max-height: 700px !important;
         }
 
         .about-text {
