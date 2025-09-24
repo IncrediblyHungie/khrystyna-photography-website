@@ -538,25 +538,26 @@
         order: 1;
     }
 
-    /* About image - Mobile first (appears second, below text) - FULL IMAGE VISIBLE */
+    /* About image - Mobile first - MAXIMUM HEIGHT for full portrait visibility */
     .about-pic-mobile.set-bg[data-setbg*="KhrystynaHome"] {
         grid-area: image;
         background-position: center center !important;
         background-size: contain !important;
         background-repeat: no-repeat !important;
         background-color: #f8f9fa !important;
-        min-height: 350px !important;
-        max-height: 400px !important;
+        min-height: 75vh !important;
+        height: 75vh !important;
         width: 100%;
         border-radius: 8px;
         order: 2;
+        aspect-ratio: 3/4; /* Portrait aspect ratio for proper scaling */
     }
 
     /* Keep stacked layout on larger mobile devices - FULL IMAGE VISIBLE */
     @media (min-width: 375px) {
         .about-pic-mobile.set-bg[data-setbg*="KhrystynaHome"] {
-            min-height: 400px !important;
-            max-height: 450px !important;
+            min-height: 70vh !important;
+            height: 70vh !important;
             background-size: contain !important;
         }
 
