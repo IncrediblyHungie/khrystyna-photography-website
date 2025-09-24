@@ -538,25 +538,26 @@
         order: 1;
     }
 
-    /* About image - Mobile first (appears second, below text) */
+    /* About image - Mobile first (appears second, below text) - FULL IMAGE VISIBLE */
     .about-pic-mobile.set-bg[data-setbg*="KhrystynaHome"] {
         grid-area: image;
         background-position: center center !important;
-        background-size: cover !important;
+        background-size: contain !important;
         background-repeat: no-repeat !important;
         background-color: #f8f9fa !important;
-        min-height: 300px !important;
-        max-height: 350px !important;
+        min-height: 350px !important;
+        max-height: 400px !important;
         width: 100%;
         border-radius: 8px;
         order: 2;
     }
 
-    /* Keep stacked layout on larger mobile devices */
+    /* Keep stacked layout on larger mobile devices - FULL IMAGE VISIBLE */
     @media (min-width: 375px) {
         .about-pic-mobile.set-bg[data-setbg*="KhrystynaHome"] {
-            min-height: 350px !important;
-            max-height: 400px !important;
+            min-height: 400px !important;
+            max-height: 450px !important;
+            background-size: contain !important;
         }
 
         .about-text-mobile {
