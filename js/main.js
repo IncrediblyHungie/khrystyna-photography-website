@@ -20,12 +20,30 @@
     });
 
     /*------------------
-        Background Set
+        Background Set with Lazy Loading
     --------------------*/
-    $('.set-bg').each(function () {
-        var bg = $(this).data('setbg');
-        $(this).css('background-image', 'url(' + bg + ')');
-    });
+    // Lazy load background images
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bg = $(entry.target).data('setbg');
+                    $(entry.target).css('background-image', 'url(' + bg + ')');
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        $('.set-bg').each(function () {
+            imageObserver.observe(this);
+        });
+    } else {
+        // Fallback for older browsers
+        $('.set-bg').each(function () {
+            var bg = $(this).data('setbg');
+            $(this).css('background-image', 'url(' + bg + ')');
+        });
+    }
 
     // Search model
     $('.search-switch').on('click', function () {
