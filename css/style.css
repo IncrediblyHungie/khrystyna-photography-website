@@ -899,12 +899,15 @@ ol {
 }
 
 .fs-widget ul {
-	width: 50%;
-	float: left;
+	width: 100%;
+	text-align: center;
+	float: none;
 }
 
 .fs-widget ul li {
 	list-style: none;
+	display: inline-block;
+	margin: 0 10px;
 }
 
 .fs-widget ul li a {
