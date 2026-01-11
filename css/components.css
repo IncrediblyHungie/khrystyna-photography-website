@@ -571,7 +571,13 @@
   padding: var(--space-24) 0;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
+}
+
+@media (min-width: 1024px) {
+  .cta-section {
+    background-attachment: fixed;
+  }
 }
 
 .cta-overlay {
