@@ -192,61 +192,6 @@
     videos.forEach(video => videoObserver.observe(video));
   }
 
-  // Contact form handling
-  function initContactForm() {
-    const form = document.getElementById('contactForm');
-
-    if (!form) return;
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Sending...';
-      submitBtn.disabled = true;
-
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData);
-
-      try {
-        // For now, just simulate success
-        // Replace with actual API endpoint when available
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
-        form.reset();
-        showMessage('Thank you! Your message has been sent.', 'success');
-      } catch (error) {
-        showMessage('Something went wrong. Please try again.', 'error');
-      } finally {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-      }
-    });
-  }
-
-  function showMessage(text, type) {
-    const existingMessage = document.querySelector('.form-message');
-    if (existingMessage) existingMessage.remove();
-
-    const message = document.createElement('div');
-    message.className = `form-message form-message-${type}`;
-    message.textContent = text;
-    message.style.cssText = `
-      padding: 1rem;
-      margin-top: 1rem;
-      border-radius: 4px;
-      text-align: center;
-      background-color: ${type === 'success' ? '#D4DBC8' : '#f8d7da'};
-      color: ${type === 'success' ? '#3A3A3A' : '#721c24'};
-    `;
-
-    const form = document.getElementById('contactForm');
-    form.appendChild(message);
-
-    setTimeout(() => message.remove(), 5000);
-  }
-
   // Initialize everything
   function init() {
     // Event listeners
@@ -280,7 +225,6 @@
     initLightbox();
     initSmoothScroll();
     initVideoObserver();
-    initContactForm();
   }
 
   // Run when DOM is ready
