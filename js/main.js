@@ -11,12 +11,25 @@
   const mobileMenu = document.getElementById('mobileMenu');
   const mobileOverlay = document.getElementById('mobileOverlay');
 
+  // Pages without a dark hero (portfolio, about, services) have a light
+  // header area, so the transparent/white-logo treatment would vanish.
+  // Keep those headers solid at all times.
+  const hasHero = !!document.querySelector('.hero');
+
   // Header scroll behavior
   function handleScroll() {
-    if (window.scrollY > 50) {
+    if (!hasHero || window.scrollY > 50) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
+    }
+
+    // Mobile booking bar appears once the hero has scrolled away
+    const bookBar = document.getElementById('mobileBookBar');
+    if (bookBar) {
+      const hero = document.querySelector('.hero');
+      const trigger = hero ? hero.offsetHeight * 0.8 : 400;
+      bookBar.classList.toggle('visible', window.scrollY > trigger);
     }
   }
 
@@ -86,26 +99,31 @@
 
     if (!filterButtons.length) return;
 
+    function applyFilter(filter) {
+      galleryItems.forEach(item => {
+        if (filter === 'all' || item.dataset.category === filter) {
+          item.style.display = '';
+          setTimeout(() => item.style.opacity = '1', 10);
+        } else {
+          item.style.opacity = '0';
+          setTimeout(() => item.style.display = 'none', 300);
+        }
+      });
+    }
+
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         // Update active button
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
-        // Filter items
-        const filter = btn.dataset.filter;
-
-        galleryItems.forEach(item => {
-          if (filter === 'all' || item.dataset.category === filter) {
-            item.style.display = '';
-            setTimeout(() => item.style.opacity = '1', 10);
-          } else {
-            item.style.opacity = '0';
-            setTimeout(() => item.style.display = 'none', 300);
-          }
-        });
+        applyFilter(btn.dataset.filter);
       });
     });
+
+    // Honor whichever filter is marked active in the markup on first paint
+    const initialBtn = document.querySelector('.filter-btn.active');
+    if (initialBtn) applyFilter(initialBtn.dataset.filter);
   }
 
   // Lightbox for gallery

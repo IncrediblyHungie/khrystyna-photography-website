@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JWHEWK95P6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JWHEWK95P6');
+  </script>
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -25,9 +33,9 @@
 
   <link rel="icon" type="image/png" href="img/horizontal logo.png">
 </head>
-<body>
+<body class="hero-page">
   <!-- Header -->
-  <header class="header scrolled" id="header">
+  <header class="header" id="header">
     <div class="header-inner">
       <a href="index.html">
         <img src="img/horizontal logo.png" alt="Khrystyna Skotte Photography" class="logo">
@@ -35,10 +43,14 @@
       <nav class="nav">
         <ul class="nav-list">
           <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="weddings.html" class="nav-link">Weddings</a></li>
+          <li><a href="elopements.html" class="nav-link">Elopements</a></li>
+          <li><a href="estate-weddings.html" class="nav-link">Estates</a></li>
+          <li><a href="engagements.html" class="nav-link">Engagements</a></li>
           <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
           <li><a href="about.html" class="nav-link">About</a></li>
           <li><a href="contact.html" class="nav-link active">Contact</a></li>
+          <li><a href="pricing.html" class="nav-link">Pricing</a></li>
         </ul>
       </nav>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
@@ -54,25 +66,36 @@
   <nav class="mobile-menu" id="mobileMenu">
     <ul class="mobile-nav-list">
       <li><a href="index.html" class="mobile-nav-link">Home</a></li>
-      <li><a href="services.html" class="mobile-nav-link">Services</a></li>
+      <li><a href="weddings.html" class="mobile-nav-link">Weddings</a></li>
+      <li><a href="elopements.html" class="mobile-nav-link">Elopements</a></li>
+      <li><a href="estate-weddings.html" class="mobile-nav-link">Estate Weddings</a></li>
+      <li><a href="engagements.html" class="mobile-nav-link">Engagements</a></li>
       <li><a href="portfolio.html" class="mobile-nav-link">Portfolio</a></li>
       <li><a href="about.html" class="mobile-nav-link">About</a></li>
       <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+      <li><a href="pricing.html" class="mobile-nav-link">Pricing</a></li>
     </ul>
   </nav>
 
   <!-- Page Header -->
-  <section class="page-header">
-    <div class="container">
-      <h1 class="page-title">Contact</h1>
-      <p class="page-subtitle">Let's start a conversation about your story</p>
+  <!-- Hero Section -->
+  <section class="hero" style="height: 60vh; min-height: 420px;">
+    <img class="hero-video" src="img/engagements/engagement-06.jpg" alt="San Diego coast at sunset">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Let's Connect</h1>
+      <p class="hero-subtitle">I'd love to hear about your story</p>
+      <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" class="btn btn-primary">Book a Call</a>
     </div>
   </section>
 
   <!-- Contact Section -->
   <section class="section">
     <div class="container">
-      <div style="max-width: 600px; margin: 0 auto;">
+      <div class="about-grid">
+        <div class="about-image fade-in">
+          <img src="img/weddings/wedding-24.jpg" alt="Couple by the water in San Diego">
+        </div>
         <!-- Contact Info -->
         <div class="fade-in" style="padding: var(--space-6); background: var(--color-background-alt); border-radius: var(--radius-md);">
           <h2 class="about-title" style="margin-bottom: var(--space-6);">Get In Touch</h2>
@@ -87,29 +110,33 @@
           </div>
 
           <div style="margin-bottom: var(--space-6);">
+            <h4 style="font-family: var(--font-body); font-weight: var(--font-semibold); font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2); color: var(--color-accent);">Email</h4>
+            <p style="color: var(--color-text);"><a href="mailto:khrystynaskotte@gmail.com" style="color: var(--color-text); text-decoration: none;">khrystynaskotte@gmail.com</a></p>
+          </div>
+
+          <div style="margin-bottom: var(--space-6);">
+            <h4 style="font-family: var(--font-body); font-weight: var(--font-semibold); font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2); color: var(--color-accent);">Phone</h4>
+            <p style="color: var(--color-text);"><a href="tel:+16195776091" style="color: var(--color-text); text-decoration: none;">(619) 577-6091</a></p>
+          </div>
+
+          <div style="margin-bottom: var(--space-6);">
             <h4 style="font-family: var(--font-body); font-weight: var(--font-semibold); font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2); color: var(--color-accent);">Location</h4>
             <p style="color: var(--color-text);">San Diego, California</p>
           </div>
 
           <div style="margin-bottom: var(--space-6);">
             <h4 style="font-family: var(--font-body); font-weight: var(--font-semibold); font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2); color: var(--color-accent);">Areas Served</h4>
-            <p style="color: var(--color-text-muted); line-height: var(--leading-relaxed);">San Diego, La Jolla, Del Mar, Carlsbad, Encinitas, Coronado, and beyond</p>
+            <p style="color: var(--color-text-muted); line-height: var(--leading-relaxed);">All of San Diego County, including La Jolla, Del Mar, Coronado, Carlsbad, Encinitas, Chula Vista and the South Bay, and Rancho Santa Fe, plus the Temecula Valley. Traveling to a venue outside these areas is welcome for an additional travel fee, just ask when you inquire.</p>
           </div>
 
           <div style="margin-bottom: var(--space-6);">
             <h4 style="font-family: var(--font-body); font-weight: var(--font-semibold); font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-3); color: var(--color-accent);">Follow Along</h4>
             <div class="footer-social" style="margin-top: 0;">
-              <a href="https://www.instagram.com/kristinaskotte.visuals" target="_blank" rel="noopener" aria-label="Instagram" style="border-color: var(--color-accent); color: var(--color-accent);">
+              <a href="https://www.instagram.com/khrystynaskotte.visuals/" target="_blank" rel="noopener" aria-label="Instagram" style="border-color: var(--color-accent); color: var(--color-accent);">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
-              </a>
-              <a href="https://www.youtube.com/@kristina.skotte" target="_blank" rel="noopener" aria-label="YouTube" style="border-color: var(--color-accent); color: var(--color-accent);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
                 </svg>
               </a>
             </div>
@@ -120,8 +147,74 @@
     </div>
   </section>
 
+  <!-- Inquiry Form -->
+  <section class="section section-alt" id="inquire">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Weddings, Proposals &amp; Portraits</p>
+        <h2 class="section-title">Tell Me About Your Day</h2>
+      </div>
+      <p style="text-align: center; max-width: 640px; margin: 0 auto var(--space-8); color: var(--color-text-muted);">Share a few details below and you'll receive a personal reply, and for estate and resort celebrations a tailored proposal, within 24 hours.</p>
+      <form action="https://formsubmit.co/khrystynaskotte@gmail.com" method="POST" style="max-width: 720px; margin: 0 auto;" class="fade-in">
+        <input type="hidden" name="_subject" value="New inquiry from khrystynaskotte.com">
+        <input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0 var(--space-6);">
+          <div class="form-group">
+            <label class="form-label" for="inq-type">What are you planning? *</label>
+            <select class="form-input" id="inq-type" name="inquiry_type" required>
+              <option value="" disabled selected>Choose one</option>
+              <option>Wedding</option>
+              <option>Elopement</option>
+              <option>Surprise Proposal</option>
+              <option>Engagement Session</option>
+              <option>Estate or Resort Wedding</option>
+              <option>Portraits, Family, or Maternity</option>
+              <option>Something Else</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" for="inq-name">Your Name *</label>
+            <input class="form-input" type="text" id="inq-name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inq-email">Email *</label>
+            <input class="form-input" type="email" id="inq-email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inq-phone">Phone</label>
+            <input class="form-input" type="tel" id="inq-phone" name="phone" autocomplete="tel" placeholder="Optional, if you'd rather talk than type">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inq-venue">Venue or Location</label>
+            <input class="form-input" type="text" id="inq-venue" name="venue" placeholder="e.g. Rancho Santa Fe estate, Hotel del Coronado, Sunset Cliffs">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inq-date">Date (or target proposal date)</label>
+            <input class="form-input" type="date" id="inq-date" name="date">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inq-planner">Planner or Coordinator (weddings only)</label>
+            <input class="form-input" type="text" id="inq-planner" name="planner" placeholder="If you're working with one">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inq-guests">Estimated Guest Count</label>
+            <input class="form-input" type="number" id="inq-guests" name="guest_count" min="1" placeholder="e.g. 80 (skip for proposals and sessions)">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inq-message">Tell me about your day *</label>
+          <textarea class="form-textarea" id="inq-message" name="message" required placeholder="What are you planning, and what matters most to you? Planning a surprise? Say so and every reply stays discreet."></textarea>
+        </div>
+        <div style="text-align: center; margin-top: var(--space-6);">
+          <button type="submit" class="btn btn-primary">Send Inquiry</button>
+          <p style="margin-top: var(--space-4); color: var(--color-text-muted); font-size: var(--text-sm);">Prefer to talk it through? <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" style="color: var(--color-accent);">Book a free 30-minute call</a>.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
   <!-- FAQ Section -->
-  <section class="section section-alt">
+  <section class="section" id="faq">
     <div class="container">
       <div class="section-header">
         <p class="section-label">Questions</p>
@@ -130,15 +223,31 @@
       <div style="max-width: 800px; margin: 0 auto;" class="fade-in">
         <div style="margin-bottom: var(--space-6); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-accent-light);">
           <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">How far in advance should I book?</h3>
-          <p style="color: var(--color-text-muted);">For weddings and elopements, I recommend booking 6-12 months in advance. For portraits and other sessions, 2-4 weeks is typically sufficient.</p>
+          <p style="color: var(--color-text-muted);">There's no set rule. Some couples book a year out, others reach out a few weeks before. Just send me your date and I'll let you know right away whether it's still open.</p>
         </div>
         <div style="margin-bottom: var(--space-6); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-accent-light);">
           <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">How long until I receive my photos?</h3>
-          <p style="color: var(--color-text-muted);">Weddings are delivered within 4-6 weeks. Portrait and lifestyle sessions are typically ready within 2-3 weeks.</p>
+          <p style="color: var(--color-text-muted);">Every gallery, weddings and sessions alike, is delivered within 2-3 weeks.</p>
         </div>
         <div style="margin-bottom: var(--space-6); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-accent-light);">
           <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">Do you travel for destination weddings?</h3>
           <p style="color: var(--color-text-muted);">Absolutely! I love destination weddings and am available to travel anywhere. Travel fees vary by location.</p>
+        </div>
+        <div style="margin-bottom: var(--space-6); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-accent-light);">
+          <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">Do you require a deposit?</h3>
+          <p style="color: var(--color-text-muted);">Yes. A 50% retainer is due upon signing to reserve your date, with the remaining balance due 14 days before your wedding or session.</p>
+        </div>
+        <div style="margin-bottom: var(--space-6); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-accent-light);">
+          <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">I'm planning a surprise proposal. How does that work?</h3>
+          <p style="color: var(--color-text-muted);">Quietly! We plan everything over text or email, you approve when and how I reach out, and on the day I stay out of sight until the yes. If a surprise needs to move on short notice, tell me right away and I'll always do my best to move with you when my schedule allows.</p>
+        </div>
+        <div style="margin-bottom: var(--space-6); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-accent-light);">
+          <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">What is your cancellation and rescheduling policy?</h3>
+          <p style="color: var(--color-text-muted);">The 50% retainer is non-refundable, since it reserves your date and covers planning time. You may reschedule once with at least 30 days' notice, subject to availability, and your retainer carries over to the new date. For outdoor sessions affected by unsafe weather, we will reschedule at no extra charge. If a wedding is cancelled within 30 days of the date, the remaining balance is also due. In the rare event that Khrystyna must cancel, you receive a full refund including the retainer, and she will help you find a qualified replacement photographer.</p>
+        </div>
+        <div style="margin-bottom: var(--space-6); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-accent-light);">
+          <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">Do you bring backup equipment?</h3>
+          <p style="color: var(--color-text-muted);">Always. I bring backup gear to every shoot, so your day is fully covered no matter what.</p>
         </div>
         <div>
           <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">What is included in a session?</h3>
@@ -156,17 +265,11 @@
           <img src="img/horizontal logo.png" alt="Khrystyna Skotte Photography" class="footer-logo">
           <p class="footer-text">San Diego wedding and elopement photographer capturing authentic love stories with artistry and heart.</p>
           <div class="footer-social">
-            <a href="https://www.instagram.com/kristinaskotte.visuals" target="_blank" rel="noopener" aria-label="Instagram">
+            <a href="https://www.instagram.com/khrystynaskotte.visuals/" target="_blank" rel="noopener" aria-label="Instagram">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-              </svg>
-            </a>
-            <a href="https://www.youtube.com/@kristina.skotte" target="_blank" rel="noopener" aria-label="YouTube">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
               </svg>
             </a>
           </div>
@@ -183,8 +286,10 @@
         <div>
           <h4 class="footer-title">Services</h4>
           <ul class="footer-links">
-            <li><a href="services.html" class="footer-link">Weddings</a></li>
-            <li><a href="services.html" class="footer-link">Elopements</a></li>
+            <li><a href="weddings.html" class="footer-link">Weddings</a></li>
+            <li><a href="elopements.html" class="footer-link">Elopements</a></li>
+            <li><a href="estate-weddings.html" class="footer-link">Estate Weddings</a></li>
+            <li><a href="engagements.html" class="footer-link">Engagements</a></li>
             <li><a href="services.html" class="footer-link">Portraits</a></li>
           </ul>
         </div>
@@ -197,7 +302,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copyright">&copy; 2025 Khrystyna Skotte Photography. All rights reserved.</p>
+        <p class="footer-copyright">&copy; 2026 Khrystyna Skotte Photography. All rights reserved.</p>
       </div>
     </div>
   </footer>

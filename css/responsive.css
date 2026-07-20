@@ -1,5 +1,14 @@
 /* Responsive Styles - Mobile First */
 
+/* Phones: shorten the hero so the rating, review quote, and starting prices
+   sit above the first fold break instead of a full screen of sky. */
+@media (max-width: 767px) {
+  .hero {
+    height: 78vh;
+    min-height: 460px;
+  }
+}
+
 /* Tablet (768px+) */
 @media (min-width: 768px) {
   :root {
@@ -21,15 +30,6 @@
   .section-lg {
     padding-top: var(--space-32);
     padding-bottom: var(--space-32);
-  }
-
-  /* Navigation */
-  .nav {
-    display: block;
-  }
-
-  .menu-toggle {
-    display: none;
   }
 
   /* Hero */
@@ -59,7 +59,7 @@
 
   /* Gallery */
   .gallery-grid {
-    grid-template-columns: repeat(3, 1fr);
+    column-count: 2;
   }
 
   /* Footer */
@@ -95,6 +95,16 @@
     --text-6xl: 5rem;
   }
 
+  /* Navigation: the full bar carries nine items, so tablets keep the
+     hamburger menu. Below this width the bar pushes the logo off screen. */
+  .nav {
+    display: block;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
   .container {
     padding-left: var(--space-8);
     padding-right: var(--space-8);
@@ -123,9 +133,10 @@
     padding: var(--space-8);
   }
 
-  /* Gallery */
+  /* Gallery: three columns balance far better than four when a filter
+     shows only 8-10 images of mixed orientation. */
   .gallery-grid {
-    grid-template-columns: repeat(4, 1fr);
+    column-count: 3;
   }
 
   /* Featured Work */
@@ -172,7 +183,7 @@
 
   /* Gallery */
   .gallery-grid {
-    gap: var(--space-6);
+    column-gap: var(--space-6);
   }
 }
 

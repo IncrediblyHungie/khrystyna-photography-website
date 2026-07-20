@@ -1,0 +1,5 @@
+# Khrystyna Skotte Photography
+User-agent: *
+Allow: /
+
+Sitemap: https://khrystynaskotte.com/sitemap.xml
