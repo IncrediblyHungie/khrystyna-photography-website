@@ -1,12 +1,10 @@
 /* Responsive Styles - Mobile First */
 
-/* Phones: the hero video fills the first screen on load, so only the video
-   section shows and the Thumbtack proof strip sits just below the fold. */
+/* Phones: shorter hero so the Thumbtack proof strip shows on the first screen. */
 @media (max-width: 767px) {
   .hero {
-    height: 100vh;   /* fallback for browsers without svh */
-    height: 100svh;  /* fill the visible viewport even with the browser bars showing */
-    min-height: 560px;
+    height: 78vh;
+    min-height: 460px;
   }
 }
 
