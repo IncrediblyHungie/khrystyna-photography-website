@@ -742,7 +742,7 @@
       // price and value. Reference details (range explainer, delivery) sit below.
       html += disclaimer() + cta();
       if (isRange) {
-        html += '<p class="est-rangenote">Where you land in the range depends on extra hours, added locations, and album choices.</p>';
+        html += '<p class="est-rangenote">Where you land in the range depends on extra hours and added locations.</p>';
       }
       html += deliveryLine();
       render(html);
@@ -801,7 +801,7 @@
         var wh = s.hours, ext = s.extended, addFee = (s.guests === 'over') ? GUEST_ADD : 0;
         var hoursLabel = ext ? '8+ hours' : (wh + ' hours');
         var overNote = (s.guests === 'over')
-          ? '<div class="est-flag est-flag-good">✓ Second photographer included for your 60+ guest count.</div>'
+          ? '<div class="est-flag est-flag-good">✓ Second photographer included for your over-60 guest count.</div>'
           : '';
         var extNote = ext ? '<div class="est-flag est-flag-note">Coverage beyond 8 hours (10, 12 hours, and up) is quoted with your date.</div>' : '';
         var wLabel, base, incl, flags;
@@ -829,7 +829,7 @@
           } else {
             wLabel = 'Wedding · Photo + Film';
             base = alacarte;
-            incl = ['Photography + cinematic film', hoursLabel + ' of coverage', '750+ photos + highlight film', 'Private online gallery'];
+            incl = ['Photography + cinematic film', hoursLabel + ' of coverage', (wh === 4 ? '400+' : wh === 6 ? '500+' : '750+') + ' photos + highlight film', 'Private online gallery'];
             flags = [overNote, signatureCard(alacarte, wh), venueLine()];
           }
         }
