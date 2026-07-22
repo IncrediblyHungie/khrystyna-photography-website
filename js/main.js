@@ -136,8 +136,9 @@
     if (!galleryItems.length || !lightbox) return;
 
     galleryItems.forEach(item => {
+      const img = item.querySelector('img');
+      if (!img) return; // video items play inline with native controls, no lightbox
       item.addEventListener('click', () => {
-        const img = item.querySelector('img');
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
         lightbox.classList.add('active');

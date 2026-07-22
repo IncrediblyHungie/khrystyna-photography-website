@@ -1,11 +1,12 @@
 /* Responsive Styles - Mobile First */
 
-/* Phones: shorten the hero so the rating, review quote, and starting prices
-   sit above the first fold break instead of a full screen of sky. */
+/* Phones: the hero video fills the first screen on load, so only the video
+   section shows and the Thumbtack proof strip sits just below the fold. */
 @media (max-width: 767px) {
   .hero {
-    height: 78vh;
-    min-height: 460px;
+    height: 100vh;   /* fallback for browsers without svh */
+    height: 100svh;  /* fill the visible viewport even with the browser bars showing */
+    min-height: 560px;
   }
 }
 

@@ -828,6 +828,18 @@
   transform: scale(1.05);
 }
 
+/* Video items play inline with native controls (no lightbox, no hover zoom) */
+.gallery-item.gallery-video {
+  cursor: default;
+}
+
+.gallery-item.gallery-video video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #000;
+}
+
 /* ===== Page Headers ===== */
 .page-header {
   padding: calc(var(--header-height) + var(--space-16)) 0 var(--space-16);
