@@ -63,7 +63,7 @@
     .est-label { display: block; font-family: var(--font-body); font-size: var(--text-sm); font-weight: var(--font-semibold); letter-spacing: .04em; text-transform: uppercase; color: var(--color-text); margin-bottom: var(--space-3); }
     .est-hint { font-weight: var(--font-regular); text-transform: none; letter-spacing: 0; color: var(--color-text-muted); font-size: .8rem; }
     .est-opts { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-    .est-opt { font-family: var(--font-body); font-size: .9rem; padding: var(--space-3) var(--space-4); border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer; transition: background .15s, color .15s; line-height: 1.2; }
+    .est-opt { font-family: var(--font-body); font-size: .9rem; min-height: 44px; padding: var(--space-2) var(--space-4); display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer; transition: background .15s, color .15s; line-height: 1.2; }
     .est-opt:hover { background: rgba(122, 132, 105, .12); }
     .est-opt.est-active { background: var(--color-accent); color: #fff; }
     .est-result { background: var(--color-background-alt); border: 1px solid rgba(122, 132, 105, .3); border-radius: var(--radius-md); padding: var(--space-6); position: sticky; top: 90px; }
@@ -683,15 +683,14 @@
       return '<p class="est-delivery">Delivered in 2–3 weeks. Need it sooner? Rush delivery from +' + money(rush) + '.</p>';
     }
 
-    // Signature shown as a matching mini-card so couples can compare like-for-like.
+    // Signature step-up: show only what's DIFFERENT from the a-la-carte card above,
+    // so it reads as an upgrade, not a duplicate.
     function signatureCard(alacarte, wh) {
-      var ctx = (wh < 8)
-        ? 'That\'s ' + (8 - wh) + ' more hour' + (8 - wh > 1 ? 's' : '') + ' than you selected, plus a second photographer.'
-        : 'A second photographer and large-wedding coverage are included.';
-      var vs = 'About ' + money(alacarte) + ' a la carte' + (alacarte > SIGNATURE ? ', so Signature saves you ' + money(alacarte - SIGNATURE) + '.' : '.');
-      return '<div class="est-signature"><p class="est-sig-title">Or step up: Signature Collection · $5,000 flat</p>' +
-        inclList(['8 hours (full day) of coverage', 'Photography + cinematic film', 'Second photographer included', '750+ photos + highlight film', 'Private online gallery', 'No guest-count fee']) +
-        '<p class="est-sig-note">' + ctx + ' ' + vs + '</p></div>';
+      var moreHrs = (wh < 8) ? ('+' + (8 - wh) + ' more hour' + (8 - wh > 1 ? 's' : '') + ' (full 8-hour day)') : '8 hours (full day)';
+      var vs = 'About ' + money(alacarte) + ' a la carte' + (alacarte > SIGNATURE ? ' — Signature saves you ' + money(alacarte - SIGNATURE) : '') + '.';
+      return '<div class="est-signature"><p class="est-sig-title">Step up: <span style="white-space:nowrap;">Signature · $5,000 flat</span></p>' +
+        inclList([moreHrs + ' of coverage', 'Second photographer included', 'No guest-count fee']) +
+        '<p class="est-sig-note">' + vs + '</p></div>';
     }
 
     function maybeScroll() {
@@ -730,10 +729,13 @@
         var tAmount = isRange ? (money(tLo) + ' – ' + money(tHi)) : ((ab.from ? 'From ' : (d.prefix || '')) + money(tLo));
         html += '<div class="est-total">Estimated total: <strong>' + tAmount + '</strong></div>';
       }
+      // Keep the price-to-CTA path tight: disclaimer + button come right after the
+      // price and value. Reference details (range explainer, delivery) sit below.
+      html += disclaimer() + cta();
       if (isRange) {
         html += '<p class="est-rangenote">Where you land in the range depends on extra hours, added locations, and album choices.</p>';
       }
-      html += deliveryLine() + disclaimer() + cta();
+      html += deliveryLine();
       render(html);
       maybeScroll();
     }
