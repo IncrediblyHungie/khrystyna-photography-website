@@ -45,6 +45,11 @@
     .price-now { font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-accent); font-weight: 600; }
     .special-price-line { margin: var(--space-2) 0 var(--space-3); }
     .special-save { font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: .05em; margin-top: 2px; }
+    .hero-prices { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2) var(--space-6); margin: var(--space-5) 0 var(--space-2); }
+    .hero-price-item { color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,.5); font-family: var(--font-body); font-size: var(--text-sm); letter-spacing: .04em; text-transform: uppercase; }
+    .hero-price-was { text-decoration: line-through; color: rgba(255,255,255,.75); margin: 0 var(--space-1); }
+    .hero-price-now { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 600; text-transform: none; letter-spacing: 0; margin-left: 2px; }
+
   </style>
 </head>
 <body class="hero-page">
@@ -92,13 +97,18 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero" style="height: 76vh; min-height: 480px;">
+  <section class="hero" style="height: 100vh; height: 100svh; min-height: 560px;">
     <img class="hero-video" src="img/weddings-portfolio/zachary-elopement-08.jpg" alt="Couple embracing in the ocean surf after their San Diego elopement">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="special-badge">End of Summer Special &middot; 20% Off</p>
       <h1 class="hero-title">Just the Two of You</h1>
-      <p class="hero-subtitle">Elopements &amp; Tiny Weddings up to 15 Guests &middot; Coverage from $520</p>
+      <p class="hero-subtitle">Elopements &amp; Tiny Weddings up to 15 Guests</p>
+      <div class="hero-prices">
+        <span class="hero-price-item">1 Hour<span class="hero-price-was">$650</span><span class="hero-price-now">$520</span></span>
+        <span class="hero-price-item">2 Hours<span class="hero-price-was">$900</span><span class="hero-price-now">$720</span></span>
+        <span class="hero-price-item">3 Hours<span class="hero-price-was">$1,200</span><span class="hero-price-now">$960</span></span>
+      </div>
       <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" class="btn btn-primary">Book Your Free Call</a>
     </div>
   </section>
