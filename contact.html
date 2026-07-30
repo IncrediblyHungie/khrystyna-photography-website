@@ -10,7 +10,6 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-JWHEWK95P6');
-    gtag('config', 'AW-XXXXXXXXXX');
   </script>
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -312,7 +311,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=2"></script>
+  <script src="js/main.js?v=3"></script>
   <script>
     (function () {
       var form = document.querySelector('form[action*="formsubmit.co"]');
@@ -346,13 +345,6 @@
           sessionStorage.removeItem('inq_fired');
         } catch (e) {}
 
-        // Google tag: form_submit event (flows to GA4 now, and to Google Ads
-        // once the real AW- conversion ID replaces the placeholder config)
-        try {
-          if (typeof gtag === 'function') {
-            gtag('event', 'form_submit', { form_destination: 'formsubmit', inquiry: 'contact' });
-          }
-        } catch (e) {}
       });
     })();
   </script>

@@ -231,20 +231,13 @@
   function initConversionTracking() {
     if (typeof gtag !== 'function') return;
 
-    const ADS_ID = 'AW-XXXXXXXXXX';
-    if (ADS_ID.indexOf('X') !== -1) return; // placeholder not yet replaced with real Ads ID
-    const LABELS = {
-      phone:    ADS_ID + '/PHONE_LABEL',
-      email:    ADS_ID + '/EMAIL_LABEL',
-      calendly: ADS_ID + '/CALENDLY_LABEL'
-    };
-    const VALUES = { phone: 30, email: 15, calendly: 40 };
+    // Events flow through the Google tag (GA4). The Google Ads conversion is
+    // event-based, so no AW- send_to is needed; mark these as key events in
+    // GA4 or import them in Google Ads to count them as conversions.
+    const VALUES = { contact_phone: 30, contact_email: 15, book_appointment: 40 };
 
-    function fire(kind, ga4Event) {
-      gtag('event', 'conversion', {
-        send_to: LABELS[kind], value: VALUES[kind], currency: 'USD'
-      });
-      gtag('event', ga4Event, { value: VALUES[kind], currency: 'USD' });
+    function fire(eventName) {
+      gtag('event', eventName, { value: VALUES[eventName], currency: 'USD' });
     }
 
     document.addEventListener('click', (e) => {
@@ -252,9 +245,9 @@
       if (!link) return;
       const href = link.getAttribute('href');
 
-      if (href.indexOf('tel:') === 0) fire('phone', 'contact_phone');
-      else if (href.indexOf('mailto:') === 0) fire('email', 'contact_email');
-      else if (href.indexOf('calendly.com') > -1) fire('calendly', 'book_appointment');
+      if (href.indexOf('tel:') === 0) fire('contact_phone');
+      else if (href.indexOf('mailto:') === 0) fire('contact_email');
+      else if (href.indexOf('calendly.com') > -1) fire('book_appointment');
     }, true);
   }
 

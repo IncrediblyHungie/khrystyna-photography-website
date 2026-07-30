@@ -11,7 +11,6 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-JWHEWK95P6');
-    gtag('config', 'AW-XXXXXXXXXX');
   </script>
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -102,7 +101,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=2"></script>
+  <script src="js/main.js?v=3"></script>
   <script>
     (function () {
       // Only count this as a lead if the visitor actually submitted the inquiry form.
@@ -126,8 +125,9 @@
       if (sessionStorage.getItem('inq_fired')) return;
       sessionStorage.setItem('inq_fired', '1');
 
-      gtag('event', 'conversion', {
-        send_to: 'AW-XXXXXXXXXX/FORM_LABEL',
+      gtag('event', 'form_submit', {
+        form_destination: 'formsubmit',
+        inquiry: 'contact',
         value: 100.0,
         currency: 'USD',
         transaction_id: 'inq-' + Date.now()
