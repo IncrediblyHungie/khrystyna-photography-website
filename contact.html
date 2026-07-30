@@ -345,6 +345,14 @@
           sessionStorage.setItem('inq_submitted', '1');
           sessionStorage.removeItem('inq_fired');
         } catch (e) {}
+
+        // Google tag: form_submit event (flows to GA4 now, and to Google Ads
+        // once the real AW- conversion ID replaces the placeholder config)
+        try {
+          if (typeof gtag === 'function') {
+            gtag('event', 'form_submit', { form_destination: 'formsubmit', inquiry: 'contact' });
+          }
+        } catch (e) {}
       });
     })();
   </script>
