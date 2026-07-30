@@ -982,3 +982,75 @@ body:not(.home):not(.hero-page) .header .menu-toggle span,
     padding-bottom: 74px;
   }
 }
+
+/* ===== Pricing Strip (sits near the top of each service page) ===== */
+.pricing-strip {
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-accent-light);
+  padding: var(--space-5) 0;
+  text-align: center;
+}
+
+.pricing-strip-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.pricing-strip-label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+.pricing-strip-prices {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-primary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.pricing-strip-prices span {
+  white-space: nowrap;
+}
+
+.pricing-strip-sep {
+  color: var(--color-accent);
+  padding: 0 var(--space-1);
+}
+
+/* Long price lines must be able to break between chunks on phones. */
+@media (max-width: 600px) {
+  .pricing-strip-prices {
+    font-size: var(--text-lg);
+  }
+}
+
+.pricing-strip-note {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.pricing-strip-link {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.pricing-strip-link:hover {
+  color: var(--color-accent-hover);
+}
