@@ -53,9 +53,9 @@
   gap: var(--space-8);
 }
 
-/* Nine nav items need tighter spacing before the desktop breakpoint,
-   otherwise the last items wrap under the logo around 1024px. */
-@media (max-width: 1180px) {
+/* Ten nav items need tighter spacing on smaller desktops, otherwise the
+   first item crowds the logo just above the 1250px hamburger breakpoint. */
+@media (max-width: 1400px) {
   .nav-list {
     gap: var(--space-5);
   }

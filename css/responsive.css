@@ -90,20 +90,22 @@
 }
 
 /* Desktop (1024px+) */
-@media (min-width: 1024px) {
-  :root {
-    --text-5xl: 4rem;
-    --text-6xl: 5rem;
-  }
-
-  /* Navigation: the full bar carries nine items, so tablets keep the
-     hamburger menu. Below this width the bar pushes the logo off screen. */
+/* Navigation: the full bar now carries ten items, so small laptops keep
+   the hamburger menu. Below this width the bar pushes the logo off screen. */
+@media (min-width: 1250px) {
   .nav {
     display: block;
   }
 
   .menu-toggle {
     display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --text-5xl: 4rem;
+    --text-6xl: 5rem;
   }
 
   .container {
