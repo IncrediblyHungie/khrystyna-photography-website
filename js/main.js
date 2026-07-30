@@ -211,6 +211,53 @@
     videos.forEach(video => videoObserver.observe(video));
   }
 
+  // Google Ads: persist the click ID so the inquiry form can attach it to the lead email.
+  // 90-day lifetime matches the conversion window.
+  function initGclidCapture() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const gclid = params.get('gclid');
+      if (gclid) {
+        localStorage.setItem('ks_gclid', JSON.stringify({ value: gclid, ts: Date.now() }));
+      } else {
+        const stored = JSON.parse(localStorage.getItem('ks_gclid') || 'null');
+        if (stored && Date.now() - stored.ts > 90 * 24 * 60 * 60 * 1000) {
+          localStorage.removeItem('ks_gclid');
+        }
+      }
+    } catch (e) {}
+  }
+
+  function initConversionTracking() {
+    if (typeof gtag !== 'function') return;
+
+    const ADS_ID = 'AW-XXXXXXXXXX';
+    if (ADS_ID.indexOf('X') !== -1) return; // placeholder not yet replaced with real Ads ID
+    const LABELS = {
+      phone:    ADS_ID + '/PHONE_LABEL',
+      email:    ADS_ID + '/EMAIL_LABEL',
+      calendly: ADS_ID + '/CALENDLY_LABEL'
+    };
+    const VALUES = { phone: 30, email: 15, calendly: 40 };
+
+    function fire(kind, ga4Event) {
+      gtag('event', 'conversion', {
+        send_to: LABELS[kind], value: VALUES[kind], currency: 'USD'
+      });
+      gtag('event', ga4Event, { value: VALUES[kind], currency: 'USD' });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href]');
+      if (!link) return;
+      const href = link.getAttribute('href');
+
+      if (href.indexOf('tel:') === 0) fire('phone', 'contact_phone');
+      else if (href.indexOf('mailto:') === 0) fire('email', 'contact_email');
+      else if (href.indexOf('calendly.com') > -1) fire('calendly', 'book_appointment');
+    }, true);
+  }
+
   // Initialize everything
   function init() {
     // Event listeners
@@ -244,6 +291,8 @@
     initLightbox();
     initSmoothScroll();
     initVideoObserver();
+    initGclidCapture();
+    initConversionTracking();
   }
 
   // Run when DOM is ready

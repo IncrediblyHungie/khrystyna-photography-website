@@ -10,6 +10,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-JWHEWK95P6');
+    gtag('config', 'AW-XXXXXXXXXX');
   </script>
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -158,6 +159,9 @@
       <p style="text-align: center; margin: 0 auto var(--space-8);">Want an answer right now? <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" class="btn btn-primary" style="margin-left: var(--space-2);">Book a Free 30-Minute Call</a></p>
       <form action="https://formsubmit.co/khrystynaskotte@gmail.com" method="POST" style="max-width: 720px; margin: 0 auto;" class="fade-in">
         <input type="hidden" name="_subject" value="New inquiry from khrystynaskotte.com">
+        <input type="hidden" name="_next" value="https://www.khrystynaskotte.com/thanks">
+        <input type="hidden" name="_autoresponse" value="Thank you for reaching out! I received your inquiry and will send you a personal reply within 24 hours. If you'd like to talk sooner, you can book a free 30-minute call at https://calendly.com/khrystynaskotte/30min or call me at (619) 577-6091. - Khrystyna">
+        <input type="hidden" name="gclid" id="inq-gclid" value="">
         <input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0 var(--space-6);">
           <div class="form-group">
@@ -303,11 +307,46 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copyright">&copy; 2026 Khrystyna Skotte Photography. All rights reserved.</p>
+        <p class="footer-copyright">&copy; 2026 Khrystyna Skotte Photography. All rights reserved. <a href="privacy.html" class="footer-link">Privacy Policy</a></p>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js?v=2"></script>
+  <script>
+    (function () {
+      var form = document.querySelector('form[action*="formsubmit.co"]');
+      if (!form) return;
+
+      // Populate the hidden gclid field from the value stored by main.js
+      try {
+        var stored = JSON.parse(localStorage.getItem('ks_gclid') || 'null');
+        if (stored && stored.value) {
+          document.getElementById('inq-gclid').value = stored.value;
+        }
+      } catch (e) {}
+
+      form.addEventListener('submit', function () {
+        var get = function (n) {
+          var el = form.querySelector('[name="' + n + '"]');
+          return el && el.value ? el.value.trim() : '';
+        };
+
+        var email = get('email').toLowerCase();
+        var phone = get('phone').replace(/\D/g, '');
+
+        var ud = {};
+        if (email) ud.email = email;
+        if (phone.length === 10) ud.phone_number = '+1' + phone;
+        else if (phone.length === 11 && phone[0] === '1') ud.phone_number = '+' + phone;
+
+        try {
+          sessionStorage.setItem('inq_ud', JSON.stringify(ud));
+          sessionStorage.setItem('inq_submitted', '1');
+          sessionStorage.removeItem('inq_fired');
+        } catch (e) {}
+      });
+    })();
+  </script>
 </body>
 </html>

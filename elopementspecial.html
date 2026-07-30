@@ -190,14 +190,14 @@
         </div>
       </div>
       <p style="text-align: center; margin-top: var(--space-6); color: var(--color-text-muted); font-size: var(--text-sm);">Your two hour evening, as it usually goes: arrive and settle in, a short ceremony, golden hour portraits along the cliffs, and a champagne toast at sunset. $720 total with the special, and the price you see is the price you pay.</p>
-      <p style="text-align: center; margin-top: var(--space-6); color: var(--color-text-muted); font-size: var(--text-sm);">Valid for bookings made by August 31, 2026. Your wedding date can be anytime, this summer or well beyond it.</p>
+      <p style="text-align: center; margin-top: var(--space-6); color: var(--color-text-muted); font-size: var(--text-sm);">Valid for bookings made by August 31, 2026. Your wedding date can be anytime, this summer or well beyond it. On September 1, prices return to $650, $900, and $1,200.</p>
       <div style="max-width: 560px; margin: var(--space-10) auto 0;">
         <div class="service-card" style="text-align: left; border: 2px solid var(--color-accent);">
           <p class="section-label" style="margin-bottom: var(--space-2);">Photo + Film</p>
           <h3 class="service-title">Two Hours of Each</h3>
           <p class="special-price-line"><span class="price-was">$1,900</span><span class="price-now">$1,520</span></p>
           <p class="special-save">You save $380 &middot; One hour of each from <span style="text-decoration: line-through;">$1,350</span> $1,080</p>
-          <p class="service-text">Photos and a cinematic highlight film from the same evening. Khrystyna captures whichever you prefer and a trusted second shooter covers the other, so nothing is missed.</p>
+          <p class="service-text">Photos and a 2 to 3 minute cinematic highlight film with your vows and audio, delivered in 2 to 3 weeks. Khrystyna captures whichever you prefer and a trusted second shooter covers the other, so nothing is missed.</p>
         </div>
       </div>
       <div class="fade-in" style="max-width: 720px; margin: var(--space-8) auto 0;">
@@ -266,7 +266,7 @@
         <p class="section-label">No Surprises</p>
         <h2 class="section-title">Booking Is Simple</h2>
       </div>
-      <p style="text-align: center; max-width: 640px; margin: 0 auto; color: #444;">Every booking is covered by a signed contract. A 50% retainer reserves your date and the remaining balance is due 14 days before your day. Every gallery is delivered within 2 to 3 weeks, and you may reschedule once with at least 30 days' notice. If unsafe weather moves in, rescheduling is free and your retainer carries over to the new date. Coverage starts when Khrystyna arrives, so travel time never counts against your hours.</p>
+      <p style="text-align: center; max-width: 640px; margin: 0 auto; color: #444;">Every booking is covered by a signed contract. A 50% retainer reserves your date and the remaining balance is due 14 days before your day. Every gallery is delivered within 2 to 3 weeks, and you may reschedule once with at least 30 days' notice. If unsafe weather moves in, rescheduling is free and your retainer carries over to the new date. If you cancel outright, the retainer is non-refundable, since it holds your date. Coverage starts when Khrystyna arrives, so travel time never counts against your hours.</p>
     </div>
   </section>
 
@@ -373,9 +373,8 @@
       var days = Math.floor(d / 86400000);
       var h = Math.floor(d % 86400000 / 3600000);
       var m = Math.floor(d % 3600000 / 60000);
-      var sec = Math.floor(d % 60000 / 1000);
-      el.textContent = days + 'd ' + pad(h) + 'h ' + pad(m) + 'm ' + pad(sec) + 's';
-      setTimeout(tick, 1000);
+      el.textContent = days + 'd ' + pad(h) + 'h ' + pad(m) + 'm';
+      setTimeout(tick, 30000);
     }
     tick();
   })();
