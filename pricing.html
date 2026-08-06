@@ -269,7 +269,7 @@
           <ul class="price-list">
             <li>1 hour of coverage</li>
             <li>2–3 week turnaround, rush delivery and same-week sneak peeks available for an additional charge</li>
-            <li><strong>Photo + film together: from $2,150</strong> ($650 photo + $500 film + $1,000 second shooter, so both are captured at once). A proposal happens once, with no second take, so a second shooter films while Khrystyna shoots.</li>
+            <li><strong>Photo + film together: $2,150</strong> ($650 photo + $500 film + $1,000 second shooter, so both are captured at once). A proposal happens once, with no second take, so a second shooter films while Khrystyna shoots.</li>
             <li>100+ color-edited photos</li>
             <li>Light, natural skin retouching on every photo</li>
             <li>Planning help before and throughout the shoot</li>
@@ -435,7 +435,7 @@
         <div class="service-card price-card">
           <h3 class="service-title">Film &middot; Proposal &amp; Engagement</h3>
           <p class="price-tag">$500</p>
-          <p class="price-basis">Want photos of the moment too? A second shooter joins so both are captured at once: photo + film together from $2,150. Rush delivery and same-week sneak peeks available for an additional charge.</p>
+          <p class="price-basis">Want photos of the moment too? A second shooter joins so both are captured at once: photo + film together, $2,150. Rush delivery and same-week sneak peeks available for an additional charge.</p>
           <ul class="price-list">
             <li>1 hour of coverage</li>
             <li>Cinematic highlight video (around 1 minute)</li>
@@ -772,7 +772,7 @@
         if (!s.media) return placeholder();
         if (s.media === 'photo') return finalize({ label: 'Proposal / Engagement · Photo', low: 650, high: 650, incl: ['1 hour of coverage', '100+ color-edited photos', 'Light retouching on every photo', 'Private online gallery'] });
         if (s.media === 'video') return finalize({ label: 'Proposal / Engagement · Film', low: 500, high: 500, incl: ['1 hour of coverage', 'Cinematic highlight video (~1 min)', 'Vertical clips for sharing', 'Private online gallery'] });
-        return finalize({ label: 'Proposal / Engagement · Photo + Film', low: 2150, high: 2150, prefix: 'From ', sub: 'A second shooter joins so both are captured at once.', incl: ['Photo and film captured together', '1 hour of coverage', '100+ photos + highlight video', 'Private online gallery'] });
+        return finalize({ label: 'Proposal / Engagement · Photo + Film', low: 2150, high: 2150, sub: 'A second shooter joins so both are captured at once.', incl: ['Photo and film captured together', '1 hour of coverage', '100+ photos + highlight video', 'Private online gallery'] });
       }
 
       // Portraits (couple / family / maternity, photography only)

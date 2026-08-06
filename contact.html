@@ -241,7 +241,7 @@
         </div>
         <div style="margin-bottom: var(--space-6); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-accent-light);">
           <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">Do you require a deposit?</h3>
-          <p style="color: var(--color-text-muted);">Yes. A 50% retainer is due upon signing to reserve your date, with the remaining balance due 14 days before your wedding or session. For proposals and engagements that is just $325 to lock your date, and for portrait sessions it is $250.</p>
+          <p style="color: var(--color-text-muted);">Yes. A 50% retainer is due upon signing to reserve your date, with the remaining balance due 14 days before your wedding or session. For photography-only proposals and engagements that is $325 to lock your date ($1,075 for photo + film), and for portrait sessions it is $250.</p>
         </div>
         <div style="margin-bottom: var(--space-6); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-accent-light);">
           <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">I'm planning a surprise proposal. How does that work?</h3>
@@ -383,6 +383,19 @@
         if (venue) venue.placeholder = isProposal ? 'e.g. Sunset Cliffs, La Jolla, or "help me pick"' : 'e.g. Rancho Santa Fe estate, Hotel del Coronado, Sunset Cliffs';
         var msgLabel = document.querySelector('label[for="inq-message"]');
         if (msgLabel) msgLabel.textContent = isProposal ? 'Tell me about the plan *' : 'Tell me about your day *';
+        var dateInput = document.getElementById('inq-date');
+        var dateLabel = document.querySelector('label[for="inq-date"]');
+        if (dateInput && dateLabel) {
+          if (isProposal) {
+            dateInput.type = 'text';
+            dateInput.placeholder = 'e.g. in town Nov 6 to 9, flexible on which evening';
+            dateLabel.textContent = 'Your date, or your travel window';
+          } else {
+            dateInput.type = 'date';
+            dateInput.placeholder = '';
+            dateLabel.textContent = 'Date (or target proposal date)';
+          }
+        }
       }
 
       sel.addEventListener('change', proposalMode);
