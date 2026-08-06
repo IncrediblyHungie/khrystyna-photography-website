@@ -204,8 +204,8 @@
           <p style="font-size: var(--text-sm); letter-spacing: .04em; text-transform: uppercase; color: var(--color-text-muted); margin: 0 0 var(--space-2);">Picnic Proposal</p>
           <p style="font-family: var(--font-heading); font-size: 2rem; color: var(--color-accent); margin: 0 0 var(--space-3);">from $1,400</p>
           <ul class="est-incl">
-            <li>Three styled scenes by Hidden Picnics, from $750</li>
-            <li>My proposal photography included</li>
+            <li>A choice of three styled scenes by Hidden Picnics</li>
+            <li>My proposal photography included in the price</li>
             <li>One inquiry books both</li>
           </ul>
         </div>
@@ -287,7 +287,7 @@
             You make one inquiry with me. I coordinate the setup, the timing, and the sunset with the Hidden Picnics team, and if your location needs a park permit, we can handle the whole process for you, with the fee quoted upfront. On the day, you walk up to a finished scene, and I am already invisible. Dreaming bigger than the standard packages? Custom scenes can be designed with Hidden Picnics, just ask.
           </p>
           <p class="about-text">
-            Not proposing? The same setups host anniversaries, vow renewals, and intimate celebrations for up to 10 guests. Celebration picnics pair with a one hour portrait session at $500, and proposals pair with my proposal coverage at $650.
+            Not proposing? The same setups host anniversaries, vow renewals, and intimate celebrations for up to 10 guests. Every package here is priced with the photography already inside it: a one hour portrait session ($500) for celebrations, or my proposal coverage ($650) for proposals. The setup is never booked without the photography, so the price you see is the price of the whole moment.
           </p>
           <a href="contact.html?type=Surprise%20Proposal#inquire" class="btn btn-primary" style="display: block; width: fit-content; margin-left: auto; margin-right: auto;">Plan My Proposal</a>
         </div>
@@ -339,21 +339,21 @@
           </div>
 
           <div class="est-q" data-q="proposalPkg">
-            <span class="est-label">Do you want a styled scene? <span class="est-hint">(setups by Hidden Picnics: 2 hours, full setup and breakdown; bring your own food or add bites below)</span></span>
+            <span class="est-label">Pick your package <span class="est-hint">(package prices include the Hidden Picnics setup, 2 hours with full setup and breakdown, plus my proposal photography; bring your own food or add bites below)</span></span>
             <div class="est-opts" data-group="proposalPkg">
-              <button type="button" class="est-opt" data-value="none">Photography only, no setup</button>
-              <button type="button" class="est-opt" data-value="lux">Luxury Picnic Proposal &middot; from $750</button>
-              <button type="button" class="est-opt" data-value="romantic">Romantic Luxury &middot; from $850</button>
-              <button type="button" class="est-opt" data-value="arch">The Arch Proposal (the flower arch) &middot; from $895</button>
+              <button type="button" class="est-opt" data-value="none">Photography only, no setup &middot; $650</button>
+              <button type="button" class="est-opt" data-value="lux">Luxury Picnic Proposal &middot; from $1,400</button>
+              <button type="button" class="est-opt" data-value="romantic">Romantic Luxury &middot; from $1,500</button>
+              <button type="button" class="est-opt" data-value="arch">The Arch Proposal (the flower arch) &middot; from $1,545</button>
             </div>
           </div>
 
           <div class="est-q" data-q="picnicStyle">
-            <span class="est-label">Hidden Picnics setup <span class="est-hint">(2 hours, full setup and breakdown; bring your own food or add bites below; every picnic booked through me includes a one hour photography session, $500)</span></span>
+            <span class="est-label">Pick your picnic <span class="est-hint">(prices include the Hidden Picnics setup, 2 hours with full setup and breakdown, plus your one hour photography session; bring your own food or add bites below)</span></span>
             <div class="est-opts" data-group="picnicStyle">
-              <button type="button" class="est-opt" data-value="simple">Simple Picnic for Two &middot; from $325</button>
-              <button type="button" class="est-opt" data-value="high">High Table for Two &middot; from $375</button>
-              <button type="button" class="est-opt" data-value="luxury">The Luxury Picnic &middot; 2 to 10 guests</button>
+              <button type="button" class="est-opt" data-value="simple">Simple Picnic for Two &middot; from $825</button>
+              <button type="button" class="est-opt" data-value="high">High Table for Two &middot; from $875</button>
+              <button type="button" class="est-opt" data-value="luxury">The Luxury Picnic &middot; 2 to 10 guests, from $895</button>
             </div>
           </div>
 
@@ -371,8 +371,8 @@
           <div class="est-q" data-q="florals">
             <span class="est-label">Florals</span>
             <div class="est-opts" data-group="florals">
-              <button type="button" class="est-opt" data-value="bud">Fresh florals in bud vases</button>
-              <button type="button" class="est-opt" data-value="centerpiece">Full centerpiece arrangement</button>
+              <button type="button" class="est-opt" data-value="bud">Fresh florals in bud vases &middot; included</button>
+              <button type="button" class="est-opt" data-value="centerpiece">Full centerpiece arrangement &middot; adds $80 to $100</button>
             </div>
           </div>
 
@@ -398,7 +398,7 @@
         </div>
 
         <aside class="est-result" id="estResult" aria-live="polite">
-          <p class="est-placeholder">Pick what you are planning, and your estimate will appear here.</p>
+          <p class="est-placeholder">Pick your package, and your estimate will appear here.</p>
         </aside>
       </div>
     </div>
@@ -574,10 +574,21 @@
       if (letters) letters.style.display = state.occasion === 'picnic' ? 'none' : '';
       var straw = root.querySelector('.est-opt[data-value="Chocolate strawberries"]');
       if (straw) straw.textContent = 'Chocolate strawberries · ' + (state.occasion === 'picnic' ? '$40' : '$45');
+      var photoBtn = root.querySelector('.est-opt[data-value="photo"]');
+      var bothBtn = root.querySelector('.est-opt[data-value="both"]');
+      if (photoBtn && bothBtn) {
+        if (state.occasion === 'proposal' && state.proposalPkg && state.proposalPkg !== 'none') {
+          photoBtn.textContent = 'Photography · included in your package';
+          bothBtn.textContent = 'Add cinematic film · +$1,500';
+        } else {
+          photoBtn.textContent = 'Photography · $650';
+          bothBtn.textContent = 'Photo + Film · $2,150';
+        }
+      }
     }
 
     function placeholder() {
-      resultEl.innerHTML = '<p class="est-placeholder">Pick what you are planning, and your estimate will appear here.</p>';
+      resultEl.innerHTML = '<p class="est-placeholder">Pick your package, and your estimate will appear here.</p>';
     }
 
     function compute() {
@@ -616,8 +627,15 @@
       });
 
       var total = setup + (photo || 0) + addonTotal;
-      var lines = noSetup ? '' : '<div><span>' + setupName + ' (Hidden Picnics)</span><span>from ' + money(setup) + '</span></div>';
-      if (photo) lines += '<div><span>' + photoName + '</span><span>' + money(photo) + '</span></div>';
+      var lines;
+      if (noSetup) {
+        lines = '<div><span>' + photoName + '</span><span>' + money(photo) + '</span></div>';
+      } else if (s.occasion === 'proposal') {
+        lines = '<div><span>' + setupName + ' with my proposal photography (1 hour, 100+ photos)</span><span>from ' + money(setup + 650) + '</span></div>';
+        if (s.photography === 'both') lines += '<div><span>Cinematic film upgrade, second shooter included</span><span>+ ' + money(1500) + '</span></div>';
+      } else {
+        lines = '<div><span>' + setupName + ' with your photography session (1 hour, 100+ photos)</span><span>from ' + money(setup + 500) + '</span></div>';
+      }
       lines += addonLines;
       var taxEst = 0;
       if (!noSetup) {
@@ -644,7 +662,7 @@
         '<a href="' + ctaHref + '" class="btn btn-primary">' + (s.occasion === 'picnic' ? 'Plan My Picnic' : 'Plan My Proposal') + '</a>' +
         (noSetup
           ? '<div class="est-flag est-flag-good" style="margin-top: var(--space-3);">✓ Just you, the ring, and me out of sight. No setup usually means no event permit, and if your exact spot is an exception I flag it while we plan. Rush delivery and same-week sneak peeks are available, quoted upfront.</div>'
-          : '<div class="est-flag est-flag-good" style="margin-top: var(--space-3);">✓ One inquiry books both. I coordinate everything with Hidden Picnics. Most picnic proposals land between $1,400 and $2,000 all in.</div>' +
+          : '<div class="est-flag est-flag-good" style="margin-top: var(--space-3);">✓ One inquiry books both. I coordinate everything with Hidden Picnics.' + (s.occasion === 'proposal' ? ' Most picnic proposals land between $1,400 and $2,000 before tax and any permit.' : '') + '</div>' +
             '<div class="est-flag est-flag-note">Setup pricing is set by Hidden Picnics, so their portion is a starting price. ' + (s.occasion === 'proposal' && s.photography === 'both' ? 'My photography prices are exact: $650 photo, $2,150 photo + film.' : 'My photography price is exact.') + '</div>' +
             '<p class="est-disclaimer">Food is not included in Hidden Picnics setups, and popular park spots need a permit about 15 days ahead.</p>');
     }
