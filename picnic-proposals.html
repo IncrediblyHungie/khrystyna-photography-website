@@ -69,6 +69,20 @@
     .est-lines div { display: flex; justify-content: space-between; gap: var(--space-4); margin-bottom: 4px; }
     @media (max-width: 899px) { .est-result { order: -1; position: sticky; top: 76px; z-index: 5; max-height: 42vh; overflow-y: auto; } }
     @media (max-width: 768px) { .partnership-strip { display: none; } }
+    /* Hero text kept off the couple: left column over water on desktop, raised into the ocean band on mobile */
+    .hero--offset .hero-subtitle { opacity: 1; }
+    @media (min-width: 769px) {
+      .hero--offset { justify-content: flex-start; }
+      .hero--offset .hero-content { text-align: left; max-width: 560px; padding-left: max(var(--space-8), 6vw); }
+      .hero--offset .hero-overlay { background: linear-gradient(to right, rgba(0,0,0,.55) 0%, rgba(0,0,0,.38) 42%, rgba(0,0,0,.10) 72%); }
+    }
+    @media (max-width: 768px) {
+      .hero--offset { align-items: flex-start; }
+      .hero--offset .hero-content { padding-top: clamp(84px, 12svh, 124px); }
+      .hero--offset .hero-title { font-size: 2.5rem; margin-bottom: var(--space-3); }
+      .hero--offset .hero-subtitle { font-size: .92rem; margin-bottom: var(--space-5); }
+      .hero--offset .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,.55) 0%, rgba(0,0,0,.45) 42%, rgba(0,0,0,.15) 64%, rgba(0,0,0,.35) 100%); }
+    }
   </style>
 </head>
 <body class="hero-page">
@@ -118,8 +132,8 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero" style="height: 100vh; height: 100svh; min-height: 520px;">
-    <img class="hero-video" src="img/weddings-portfolio/jude-proposal-03.jpg" alt="Down on one knee on the coastal rocks, the moment of the ask" style="object-position: 50% 30%;">
+  <section class="hero hero--offset" style="height: 100vh; height: 100svh; min-height: 520px;">
+    <img class="hero-video" src="img/weddings-portfolio/jude-proposal-03.jpg" alt="Down on one knee on the coastal rocks, the moment of the ask" style="object-position: 50% 30%;" fetchpriority="high" decoding="async">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1 class="hero-title">Proposals in San Diego</h1>
