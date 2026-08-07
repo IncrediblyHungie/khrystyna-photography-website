@@ -183,8 +183,8 @@
             <input class="form-input" type="email" id="inq-email" name="email" required>
           </div>
           <div class="form-group">
-            <label class="form-label" for="inq-phone">Phone</label>
-            <input class="form-input" type="tel" id="inq-phone" name="phone" autocomplete="tel" placeholder="Optional, if you'd rather talk than type">
+            <label class="form-label" for="inq-phone">Phone *</label>
+            <input class="form-input" type="tel" id="inq-phone" name="phone" autocomplete="tel" required maxlength="16" placeholder="(619) 555-0123" title="10-digit phone number">
           </div>
           <div class="form-group">
             <label class="form-label" for="inq-venue">Venue or Location</label>
@@ -394,6 +394,20 @@
 
       sel.addEventListener('change', proposalMode);
       proposalMode();
+    })();
+  </script>
+  <script>
+    // Phone is required site-wide: accept any formatting, enforce a real 10-digit US number
+    (function () {
+      var phone = document.getElementById('inq-phone');
+      if (!phone) return;
+      function checkPhone() {
+        var digits = phone.value.replace(/\D/g, '');
+        var ok = digits.length === 10 || (digits.length === 11 && digits.charAt(0) === '1');
+        phone.setCustomValidity(!phone.value || ok ? '' : 'Enter a 10-digit phone number, like (619) 555-0123');
+      }
+      phone.addEventListener('input', checkPhone);
+      checkPhone();
     })();
   </script>
 </body>
