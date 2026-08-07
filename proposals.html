@@ -700,6 +700,17 @@
             state.addons = [];
             root.querySelectorAll('[data-group="addons"] .est-opt').forEach(function (b) { b.classList.remove('est-active'); });
           }
+          // Photography-only and the $650 photography choice imply each other, so one tap quotes
+          if (group === 'proposalPkg' && val === 'none' && !state.photography) {
+            state.photography = 'photo';
+            var pb = root.querySelector('.est-opt[data-value="photo"]');
+            if (pb) { pb.closest('.est-opts').querySelectorAll('.est-opt').forEach(function (b) { b.classList.remove('est-active'); }); pb.classList.add('est-active'); }
+          }
+          if (group === 'photography' && state.occasion === 'proposal' && !state.proposalPkg) {
+            state.proposalPkg = 'none';
+            var nb = root.querySelector('.est-opt[data-value="none"]');
+            if (nb) { nb.closest('.est-opts').querySelectorAll('.est-opt').forEach(function (b) { b.classList.remove('est-active'); }); nb.classList.add('est-active'); }
+          }
         }
         sync();
       }
