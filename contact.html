@@ -156,10 +156,16 @@
       <p style="text-align: center; margin: 0 auto var(--space-8);">Want an answer right now? <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" class="btn btn-outline-dark" style="margin-left: var(--space-2);">Book a Free 30-Minute Call</a></p>
       <form action="https://formsubmit.co/khrystynaskotte@gmail.com" method="POST" style="max-width: 720px; margin: 0 auto;" class="fade-in">
         <input type="hidden" name="_subject" value="New inquiry from khrystynaskotte.com">
-        <input type="hidden" name="_next" value="https://www.khrystynaskotte.com/thanks">
+        <input type="hidden" name="_next" id="inq-next" value="https://www.khrystynaskotte.com/thanks">
         <input type="hidden" name="_autoresponse" value="Got your note. A personal reply is on the way within 24 hours. If it's time-sensitive, text (619) 577-6091. - K.">
         <input type="hidden" name="gclid" id="inq-gclid" value="">
         <input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off">
+        <div id="planChips" style="display: none; flex-wrap: wrap; gap: 8px; margin: 0 0 var(--space-5);">
+          <p style="width: 100%; margin: 0 0 4px; font-size: .85rem; color: var(--color-text-muted);">Where are you at? One tap writes the message for you.</p>
+          <button type="button" class="plan-chip" aria-pressed="false" data-fill="I have a date and a spot in mind. Tell me the next step." style="font-family: var(--font-body); font-size: .85rem; min-height: 44px; padding: 10px 14px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer;">I have a date and a spot</button>
+          <button type="button" class="plan-chip" aria-pressed="false" data-fill="I have a date. Help me pick the spot." style="font-family: var(--font-body); font-size: .85rem; min-height: 44px; padding: 10px 14px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer;">I have a date, help me pick the spot</button>
+          <button type="button" class="plan-chip" aria-pressed="false" data-fill="Help me with all of it: the spot, the timing, and the plan." style="font-family: var(--font-body); font-size: .85rem; min-height: 44px; padding: 10px 14px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer;">Help me with all of it</button>
+        </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0 var(--space-6);">
           <div class="form-group">
             <label class="form-label" for="inq-type">What are you planning? *</label>
@@ -206,16 +212,12 @@
         </div>
         <div class="form-group">
           <label class="form-label" for="inq-message">Tell me about your day *</label>
-          <div id="planChips" style="display: none; flex-wrap: wrap; gap: 8px; margin: 0 0 var(--space-2);">
-            <button type="button" class="plan-chip" aria-pressed="false" data-fill="I have a date and a spot in mind. Tell me the next step." style="font-family: var(--font-body); font-size: .85rem; min-height: 44px; padding: 10px 14px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer;">I have a date and a spot</button>
-            <button type="button" class="plan-chip" aria-pressed="false" data-fill="I have a date. Help me pick the spot." style="font-family: var(--font-body); font-size: .85rem; min-height: 44px; padding: 10px 14px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer;">I have a date, help me pick the spot</button>
-            <button type="button" class="plan-chip" aria-pressed="false" data-fill="Help me with all of it: the spot, the timing, and the plan." style="font-family: var(--font-body); font-size: .85rem; min-height: 44px; padding: 10px 14px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer;">Help me with all of it</button>
-          </div>
           <textarea class="form-textarea" id="inq-message" name="message" required placeholder="What are you planning, and what matters most to you? Planning a surprise? Say so and every reply stays discreet."></textarea>
         </div>
         <div style="text-align: center; margin-top: var(--space-6);">
           <button type="submit" class="btn btn-primary">Send Inquiry</button>
-          <p style="margin-top: var(--space-4); color: var(--color-text-muted); font-size: var(--text-sm);">Prefer to talk it through? <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" style="color: var(--color-accent);">Book a free 30-minute call</a>.</p>
+          <p style="margin-top: var(--space-4); color: var(--color-text-muted); font-size: var(--text-sm);">Prefer to text? <a href="sms:+16195776091" style="color: var(--color-accent);">(619) 577-6091</a>. Before 3pm gets a same-day answer on availability.</p>
+          <p style="margin-top: var(--space-2); color: var(--color-text-muted); font-size: var(--text-sm);">Prefer to talk it through? <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" style="color: var(--color-accent);">Book a free 30-minute call</a>.</p>
         </div>
       </form>
     </div>
@@ -314,7 +316,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=4"></script>
+  <script src="js/main.js?v=5"></script>
   <script>
     (function () {
       var form = document.querySelector('form[action*="formsubmit.co"]');
@@ -404,6 +406,8 @@
             dateLabel.textContent = 'Date (or target proposal date)';
           }
         }
+        var nextEl = document.getElementById('inq-next');
+        if (nextEl) nextEl.value = 'https://www.khrystynaskotte.com/thanks' + (isProposal ? '?type=proposal' : '');
       }
 
       sel.addEventListener('change', proposalMode);
@@ -432,7 +436,8 @@
             c.style.color = on ? '#fff' : 'var(--color-text)';
             c.setAttribute('aria-pressed', on ? 'true' : 'false');
           });
-          msgBox.focus();
+          var nameEl = document.getElementById('inq-name');
+          if (nameEl && !nameEl.value) nameEl.focus(); else msgBox.focus();
         });
       }
     })();

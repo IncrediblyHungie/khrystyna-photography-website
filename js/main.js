@@ -234,7 +234,7 @@
     // Events flow through the Google tag (GA4). The Google Ads conversion is
     // event-based, so no AW- send_to is needed; mark these as key events in
     // GA4 or import them in Google Ads to count them as conversions.
-    const VALUES = { contact_phone: 30, contact_email: 15, book_appointment: 40 };
+    const VALUES = { contact_phone: 30, contact_text: 30, contact_email: 15, book_appointment: 40 };
 
     function fire(eventName) {
       gtag('event', eventName, { value: VALUES[eventName], currency: 'USD' });
@@ -246,6 +246,7 @@
       const href = link.getAttribute('href');
 
       if (href.indexOf('tel:') === 0) fire('contact_phone');
+      else if (href.indexOf('sms:') === 0) fire('contact_text');
       else if (href.indexOf('mailto:') === 0) fire('contact_email');
       else if (href.indexOf('calendly.com') > -1) fire('book_appointment');
     }, true);
