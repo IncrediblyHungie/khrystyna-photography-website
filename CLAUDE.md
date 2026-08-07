@@ -36,7 +36,7 @@ Plain `http.server` does **not** apply `cleanUrls`, so extensionless links will
 ## Page Inventory
 
 **In nav and sitemap:** index, weddings, pricing, services, portfolio, about,
-contact, estate-weddings, elopements, proposals.
+contact, elopements, proposals. (estate-weddings and engagements were deleted 2026-08-06; their URLs 301 via vercel.json.)
 
 **Unlisted (deliberately absent from nav and sitemap):**
 
