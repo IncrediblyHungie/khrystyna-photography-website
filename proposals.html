@@ -79,11 +79,12 @@
       .hero--offset .hero-overlay { background: linear-gradient(to right, rgba(0,0,0,.55) 0%, rgba(0,0,0,.38) 42%, rgba(0,0,0,.10) 72%); }
     }
     @media (max-width: 768px) {
-      .hero--offset { align-items: flex-start; }
-      .hero--offset .hero-content { padding-top: clamp(84px, 12svh, 124px); }
-      .hero--offset .hero-title { font-size: 2.5rem; margin-bottom: var(--space-3); }
-      .hero--offset .hero-subtitle { font-size: .92rem; margin-bottom: var(--space-5); }
-      .hero--offset .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,.55) 0%, rgba(0,0,0,.45) 42%, rgba(0,0,0,.15) 64%, rgba(0,0,0,.35) 100%); }
+      .hero--offset { align-items: stretch; }
+      .hero--offset .hero-content { display: flex; flex-direction: column; align-items: center; height: 100%; padding-top: clamp(84px, 11svh, 120px); padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+      .hero--offset .hero-content .btn { margin-top: auto; }
+      .hero--offset .hero-title { font-size: 2.5rem; margin-bottom: var(--space-3); text-wrap: balance; }
+      .hero--offset .hero-subtitle { font-size: .92rem; margin-bottom: 0; }
+      .hero--offset .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,.55) 0%, rgba(0,0,0,.40) 30%, rgba(0,0,0,0) 46%, rgba(0,0,0,0) 60%, rgba(0,0,0,.55) 100%); }
     }
   </style>
 </head>
@@ -131,13 +132,13 @@
 
   <!-- Hero Section -->
   <section class="hero hero--offset" style="height: 100vh; height: 100svh; min-height: 520px;">
-    <img class="hero-video" src="img/engagements/engagement-04.jpg" alt="Hands together with a new engagement ring in golden hour light" style="object-position: 50% 45%;" fetchpriority="high" decoding="async">
+    <img class="hero-video" src="img/engagements/engagement-04.jpg" alt="Hands together with a new engagement ring in golden hour light" style="object-position: 35% 45%;" fetchpriority="high" decoding="async">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1 class="hero-title">Proposals in San Diego</h1>
       <p class="hero-subtitle">We Plan It Together. I Capture It, Unseen. Photography $650 &middot; With a Styled Picnic Scene, from $1,400</p>
       <a href="contact.html?type=Surprise%20Proposal#inquire" class="btn btn-primary">Plan My Proposal</a>
-      <p style="margin-top: var(--space-4);"><a href="sms:+16195776091" style="color: #fff; text-decoration: underline;">or text your date to (619) 577-6091: before 3pm gets a same-day answer →</a></p>
+      <p style="margin-top: var(--space-4); line-height: 1.5;"><a href="sms:+16195776091" style="color: #fff; text-decoration: underline;">or text your date: (619) 577-6091 →</a><br><span style="font-size: .8rem; opacity: .85;">before 3pm gets a same-day answer</span></p>
       <p style="margin-top: var(--space-2);"><a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" style="color: #fff; text-decoration: underline;">or book a free 30-minute call →</a></p>
     </div>
   </section>
