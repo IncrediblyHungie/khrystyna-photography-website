@@ -71,7 +71,8 @@
     .est-lines div { display: flex; justify-content: space-between; gap: var(--space-4); margin-bottom: 4px; }
     .est-detail:not(:empty) { background: var(--color-background-alt); border: 1px solid rgba(122, 132, 105, .3); border-radius: var(--radius-md); padding: var(--space-5); }
     @media (min-width: 900px) { .est-detail { grid-column: 2; } }
-    @media (max-width: 899px) { .est-result { order: -1; min-height: 206px; } }
+    .estimator { overflow-anchor: none; }
+    @media (max-width: 899px) { .est-result { order: -1; min-height: 246px; display: flex; flex-direction: column; justify-content: center; } }
     @media (max-width: 768px) { .partnership-strip { display: none; } }
     /* Hero text kept off the ring: left column on desktop, letterboxed top and bottom bands on mobile */
     .hero--offset .hero-subtitle { opacity: 1; }
