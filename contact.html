@@ -153,7 +153,7 @@
         <h2 class="section-title">Tell Me About Your Day</h2>
       </div>
       <p style="text-align: center; max-width: 640px; margin: 0 auto var(--space-4); color: var(--color-text-muted);">Share a few details below and you'll receive a personal reply, and for estate and resort celebrations a tailored proposal, within 24 hours.</p>
-      <p style="text-align: center; margin: 0 auto var(--space-8);">Want an answer right now? <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" class="btn btn-outline-dark" style="margin-left: var(--space-2);">Book a Free 30-Minute Call</a></p>
+      <p id="quickAnswer" style="text-align: center; margin: 0 auto var(--space-8);">Want an answer right now? <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" class="btn btn-outline-dark" style="margin-left: var(--space-2);">Book a Free 30-Minute Call</a></p>
       <form action="https://formsubmit.co/khrystynaskotte@gmail.com" method="POST" style="max-width: 720px; margin: 0 auto;" class="fade-in">
         <input type="hidden" name="_subject" value="New inquiry from khrystynaskotte.com">
         <input type="hidden" name="_next" id="inq-next" value="https://www.khrystynaskotte.com/thanks">
@@ -216,7 +216,7 @@
         </div>
         <div style="text-align: center; margin-top: var(--space-6);">
           <button type="submit" class="btn btn-primary">Send Inquiry</button>
-          <p style="margin-top: var(--space-4); color: var(--color-text-muted); font-size: var(--text-sm);">Prefer to text? <a href="sms:+16195776091" style="color: var(--color-accent);">(619) 577-6091</a>. Before 3pm gets a same-day answer on availability.</p>
+          <p style="margin-top: var(--space-4); color: var(--color-text-muted); font-size: var(--text-sm);">Prefer to text? <a href="sms:+16195776091" style="color: var(--color-accent); display: inline-block; padding: 12px 4px; margin: -12px -4px;">(619) 577-6091</a>. Before 3pm gets a same-day answer on availability.</p>
           <p style="margin-top: var(--space-2); color: var(--color-text-muted); font-size: var(--text-sm);">Prefer to talk it through? <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" style="color: var(--color-accent);">Book a free 30-minute call</a>.</p>
         </div>
       </form>
@@ -253,7 +253,7 @@
         </div>
         <div style="margin-bottom: var(--space-6); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-accent-light);">
           <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">What is your cancellation and rescheduling policy?</h3>
-          <p style="color: var(--color-text-muted);">The 50% retainer is non-refundable, since it reserves your date and covers planning time. You may reschedule once with at least 30 days' notice, subject to availability, and your retainer carries over to the new date. For outdoor sessions affected by unsafe weather, we will reschedule at no extra charge. If a wedding is cancelled within 30 days of the date, the remaining balance is also due. In the rare event that Khrystyna must cancel, you receive a full refund including the retainer, and she will help you find a qualified replacement photographer.</p>
+          <p style="color: var(--color-text-muted);">The 50% retainer is non-refundable, since it reserves your date and covers planning time. You may reschedule once with at least 30 days' notice, subject to availability, and your retainer carries over to the new date. A surprise proposal that has to move on shorter notice gets my best effort to move with it. For outdoor sessions affected by unsafe weather, we will reschedule at no extra charge. If a wedding is cancelled within 30 days of the date, the remaining balance is also due. In the rare event that Khrystyna must cancel, you receive a full refund including the retainer, and she will help you find a qualified replacement photographer.</p>
         </div>
         <div style="margin-bottom: var(--space-6); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-accent-light);">
           <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">Do you bring backup equipment?</h3>
@@ -408,6 +408,10 @@
         }
         var nextEl = document.getElementById('inq-next');
         if (nextEl) nextEl.value = 'https://www.khrystynaskotte.com/thanks' + (isProposal ? '?type=proposal' : '');
+        var qa = document.getElementById('quickAnswer');
+        if (qa) qa.innerHTML = isProposal
+          ? 'Want an answer right now? <a href="sms:+16195776091" class="btn btn-outline-dark" style="margin-left: var(--space-2);">Text (619) 577-6091</a><br><span style="display: inline-block; margin-top: var(--space-3); font-size: var(--text-sm); color: var(--color-text-muted);">Prefer a call? <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" style="color: var(--color-accent);">Book a free 30-minute call</a></span>'
+          : 'Want an answer right now? <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" class="btn btn-outline-dark" style="margin-left: var(--space-2);">Book a Free 30-Minute Call</a>';
       }
 
       sel.addEventListener('change', proposalMode);
@@ -423,13 +427,16 @@
         };
         sel.addEventListener('change', chipMode);
         chipMode();
-        var chipBase = null;
         chips.addEventListener('click', function (e) {
           var b = e.target.closest('.plan-chip');
           if (!b || !msgBox) return;
-          if (chipBase === null) chipBase = msgBox.value.trim();
+          var base = msgBox.value;
+          Array.prototype.forEach.call(chips.querySelectorAll('.plan-chip'), function (c) {
+            base = base.split(c.getAttribute('data-fill')).join('');
+          });
+          base = base.replace(/\n{2,}/g, '\n').trim();
           var fill = b.getAttribute('data-fill');
-          msgBox.value = chipBase ? chipBase + '\n' + fill : fill;
+          msgBox.value = base ? base + '\n' + fill : fill;
           Array.prototype.forEach.call(chips.querySelectorAll('.plan-chip'), function (c) {
             var on = c === b;
             c.style.background = on ? 'var(--color-accent)' : 'transparent';
