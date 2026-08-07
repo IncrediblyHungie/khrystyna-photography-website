@@ -184,7 +184,8 @@
           </div>
           <div class="form-group">
             <label class="form-label" for="inq-phone">Phone *</label>
-            <input class="form-input" type="tel" id="inq-phone" name="phone" autocomplete="tel" required maxlength="16" placeholder="(619) 555-0123" title="10-digit phone number">
+            <input class="form-input" type="tel" id="inq-phone" name="phone" autocomplete="tel" required maxlength="18" placeholder="(619) 555-0123" title="10-digit US number, or international starting with +">
+            <p style="font-size: .78rem; color: var(--color-text-muted); margin: 4px 0 0;">Your number is for texting the plan. I never call unless you ask.</p>
           </div>
           <div class="form-group">
             <label class="form-label" for="inq-venue">Venue or Location</label>
@@ -377,6 +378,14 @@
         if (venue) venue.placeholder = isProposal ? 'e.g. Sunset Cliffs, La Jolla, or "help me pick"' : 'e.g. Rancho Santa Fe estate, Hotel del Coronado, Sunset Cliffs';
         var msgLabel = document.querySelector('label[for="inq-message"]');
         if (msgLabel) msgLabel.textContent = isProposal ? 'Tell me about the plan *' : 'Tell me about your day *';
+        var secLabel = document.querySelector('#inquire .section-label');
+        var secTitle = document.querySelector('#inquire .section-title');
+        var secIntro = document.querySelector('#inquire .section-header + p');
+        if (secLabel) secLabel.textContent = isProposal ? 'Surprise Proposals' : 'Weddings, Proposals & Portraits';
+        if (secTitle) secTitle.textContent = isProposal ? 'Tell Me About the Plan' : 'Tell Me About Your Day';
+        if (secIntro) secIntro.textContent = isProposal
+          ? 'Share a few details below and you will hear back within 24 hours. Every reply stays discreet: you approve when and how I reach out.'
+          : 'Share a few details below and you\'ll receive a personal reply, and for estate and resort celebrations a tailored proposal, within 24 hours.';
         var dateInput = document.getElementById('inq-date');
         var dateLabel = document.querySelector('label[for="inq-date"]');
         if (dateInput && dateLabel) {
@@ -403,8 +412,9 @@
       if (!phone) return;
       function checkPhone() {
         var digits = phone.value.replace(/\D/g, '');
-        var ok = digits.length === 10 || (digits.length === 11 && digits.charAt(0) === '1');
-        phone.setCustomValidity(!phone.value || ok ? '' : 'Enter a 10-digit phone number, like (619) 555-0123');
+        var intl = phone.value.trim().charAt(0) === '+' && digits.length >= 8 && digits.length <= 15;
+        var ok = digits.length === 10 || (digits.length === 11 && digits.charAt(0) === '1') || intl;
+        phone.setCustomValidity(!phone.value || ok ? '' : 'Enter a 10-digit US number like (619) 555-0123, or an international number starting with +');
       }
       phone.addEventListener('input', checkPhone);
       checkPhone();
