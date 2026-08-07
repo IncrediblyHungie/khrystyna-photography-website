@@ -194,7 +194,7 @@
 
   // Video play/pause on visibility
   function initVideoObserver() {
-    const videos = document.querySelectorAll('.hero-video');
+    const videos = document.querySelectorAll('video.hero-video');
 
     if (!videos.length) return;
 

@@ -72,7 +72,7 @@
     .est-detail:not(:empty) { background: var(--color-background-alt); border: 1px solid rgba(122, 132, 105, .3); border-radius: var(--radius-md); padding: var(--space-5); }
     @media (min-width: 900px) { .est-detail { grid-column: 2; } }
     .estimator { overflow-anchor: none; }
-    @media (max-width: 899px) { .est-result { order: -1; min-height: 246px; display: flex; flex-direction: column; justify-content: center; } }
+    @media (max-width: 899px) { .est-result { position: static; order: -1; min-height: 272px; display: flex; flex-direction: column; justify-content: center; } }
     @media (max-width: 768px) { .partnership-strip { display: none; } }
     /* Hero text kept off the ring: left column on desktop, letterboxed top and bottom bands on mobile */
     .hero--offset .hero-subtitle { opacity: 1; }
@@ -87,7 +87,7 @@
       .hero--offset .hero-content .btn { margin-top: auto; }
       .hero--offset .hero-title { font-size: 2.5rem; margin-bottom: var(--space-3); text-wrap: balance; }
       .hero--offset .hero-subtitle { font-size: .92rem; margin-bottom: 0; }
-      .hero--offset .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,.55) 0%, rgba(0,0,0,.40) 30%, rgba(0,0,0,0) 46%, rgba(0,0,0,0) 52%, rgba(0,0,0,.62) 100%); }
+      .hero--offset .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,.55) 0%, rgba(0,0,0,.40) 30%, rgba(0,0,0,0) 46%, rgba(0,0,0,0) 50%, rgba(0,0,0,.72) 100%); }
     }
   </style>
 </head>
@@ -242,7 +242,7 @@
           <blockquote style="border-left: 3px solid var(--color-accent); padding-left: var(--space-4); margin: 0 0 var(--space-5); color: #444; font-style: italic;">"She locked in the date and helped me pick the perfect moment to capture. We were so grateful to have her there." <span style="font-style: normal; font-weight: var(--font-semibold); display: block; margin-top: var(--space-2);">Rico B., proposal</span></blockquote>
           <a href="contact.html?type=Surprise%20Proposal#inquire" class="btn btn-primary" style="display: block; width: fit-content; margin-left: auto; margin-right: auto;">Plan My Proposal</a>
         </div>
-        <div class="about-image fade-in">
+        <div class="about-image fade-in" style="aspect-ratio: 16 / 9;">
           <video controls playsinline preload="none" poster="img/engagements/engagement-02.jpg" style="width:100%; height:100%; object-fit:cover; display:block;">
             <source src="video/proposal-highlight.mp4" type="video/mp4">
           </video>
@@ -731,6 +731,6 @@
     sync();
   })();
   </script>
-  <script src="js/main.js?v=3"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>
