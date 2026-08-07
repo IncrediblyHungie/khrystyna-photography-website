@@ -69,7 +69,9 @@
     .est-total strong { color: var(--color-accent); font-size: 1.1rem; font-family: var(--font-heading); }
     .est-lines { font-size: .88rem; color: #444; margin: 0 0 var(--space-2); }
     .est-lines div { display: flex; justify-content: space-between; gap: var(--space-4); margin-bottom: 4px; }
-    @media (max-width: 899px) { .est-result { order: -1; } }
+    .est-detail:not(:empty) { background: var(--color-background-alt); border: 1px solid rgba(122, 132, 105, .3); border-radius: var(--radius-md); padding: var(--space-5); }
+    @media (min-width: 900px) { .est-detail { grid-column: 2; } }
+    @media (max-width: 899px) { .est-result { order: -1; min-height: 206px; } }
     @media (max-width: 768px) { .partnership-strip { display: none; } }
     /* Hero text kept off the ring: left column on desktop, letterboxed top and bottom bands on mobile */
     .hero--offset .hero-subtitle { opacity: 1; }
@@ -397,6 +399,7 @@
         <aside class="est-result" id="estResult" aria-live="polite">
           <p class="est-placeholder">Pick your package, and your estimate will appear here.</p>
         </aside>
+        <div class="est-detail" id="estDetail"></div>
       </div>
     </div>
   </section>
@@ -547,6 +550,7 @@
     var root = document.getElementById('estimator');
     if (!root) return;
     var resultEl = document.getElementById('estResult');
+    var detailEl = document.getElementById('estDetail');
 
     // Hidden Picnics setup pricing (starting-at, taxes and park permit added by HP)
     var PROPOSAL_PKG = { lux: 750, romantic: 850, arch: 895, none: 0 };
@@ -596,6 +600,7 @@
 
     function placeholder() {
       resultEl.innerHTML = '<p class="est-placeholder">Pick your package, and your estimate will appear here.</p>';
+      detailEl.innerHTML = '';
     }
 
     function compute() {
@@ -662,11 +667,12 @@
       resultEl.innerHTML =
         '<p class="est-result-label">' + (noSetup ? 'Your Proposal' : 'Your Picnic ' + (s.occasion === 'proposal' ? 'Proposal' : 'Celebration')) + '</p>' +
         '<p class="est-amount">' + (exact ? '' : 'From ') + money(total) + '</p>' +
-        '<div class="est-lines">' + lines + '</div>' +
         '<div class="est-total">' + (noSetup
           ? 'All together: <strong>' + money(total) + '</strong>'
           : 'All in with tax, and permit if needed: <strong>about ' + money(total + taxEst) + ' to ' + money(total + taxEst + 100) + '</strong>') + '</div>' +
-        '<a href="' + ctaHref + '" class="btn btn-primary">' + (s.occasion === 'picnic' ? 'Plan My Picnic' : 'Plan My Proposal') + '</a>' +
+        '<a href="' + ctaHref + '" class="btn btn-primary">' + (s.occasion === 'picnic' ? 'Plan My Picnic' : 'Plan My Proposal') + '</a>';
+      detailEl.innerHTML =
+        '<div class="est-lines">' + lines + '</div>' +
         (noSetup
           ? '<div class="est-flag est-flag-good" style="margin-top: var(--space-3);">✓ Just you, the ring, and me out of sight. No setup usually means no event permit, and if your exact spot is an exception I flag it while we plan. Rush delivery and same-week sneak peeks are available, quoted upfront.</div>'
           : '<div class="est-flag est-flag-good" style="margin-top: var(--space-3);">✓ One inquiry books both. I coordinate everything with Hidden Picnics.' + (s.occasion === 'proposal' ? ' Most picnic proposals land between $1,400 and $2,000 before tax and any permit.' : '') + '</div>' +
