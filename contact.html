@@ -207,9 +207,9 @@
         <div class="form-group">
           <label class="form-label" for="inq-message">Tell me about your day *</label>
           <div id="planChips" style="display: none; flex-wrap: wrap; gap: 8px; margin: 0 0 var(--space-2);">
-            <button type="button" class="plan-chip" data-fill="I have a date and a spot in mind. Tell me the next step." style="font-family: var(--font-body); font-size: .85rem; min-height: 40px; padding: 8px 14px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer;">I have a date and a spot</button>
-            <button type="button" class="plan-chip" data-fill="I have a date. Help me pick the spot." style="font-family: var(--font-body); font-size: .85rem; min-height: 40px; padding: 8px 14px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer;">I have a date, help me pick the spot</button>
-            <button type="button" class="plan-chip" data-fill="Help me with all of it: the spot, the timing, and the plan." style="font-family: var(--font-body); font-size: .85rem; min-height: 40px; padding: 8px 14px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer;">Help me with all of it</button>
+            <button type="button" class="plan-chip" aria-pressed="false" data-fill="I have a date and a spot in mind. Tell me the next step." style="font-family: var(--font-body); font-size: .85rem; min-height: 44px; padding: 10px 14px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer;">I have a date and a spot</button>
+            <button type="button" class="plan-chip" aria-pressed="false" data-fill="I have a date. Help me pick the spot." style="font-family: var(--font-body); font-size: .85rem; min-height: 44px; padding: 10px 14px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer;">I have a date, help me pick the spot</button>
+            <button type="button" class="plan-chip" aria-pressed="false" data-fill="Help me with all of it: the spot, the timing, and the plan." style="font-family: var(--font-body); font-size: .85rem; min-height: 44px; padding: 10px 14px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer;">Help me with all of it</button>
           </div>
           <textarea class="form-textarea" id="inq-message" name="message" required placeholder="What are you planning, and what matters most to you? Planning a surprise? Say so and every reply stays discreet."></textarea>
         </div>
@@ -419,11 +419,19 @@
         };
         sel.addEventListener('change', chipMode);
         chipMode();
+        var chipBase = null;
         chips.addEventListener('click', function (e) {
           var b = e.target.closest('.plan-chip');
           if (!b || !msgBox) return;
+          if (chipBase === null) chipBase = msgBox.value.trim();
           var fill = b.getAttribute('data-fill');
-          msgBox.value = msgBox.value && msgBox.value.indexOf('From the estimator') === 0 ? msgBox.value.trim() + '\n' + fill : fill;
+          msgBox.value = chipBase ? chipBase + '\n' + fill : fill;
+          Array.prototype.forEach.call(chips.querySelectorAll('.plan-chip'), function (c) {
+            var on = c === b;
+            c.style.background = on ? 'var(--color-accent)' : 'transparent';
+            c.style.color = on ? '#fff' : 'var(--color-text)';
+            c.setAttribute('aria-pressed', on ? 'true' : 'false');
+          });
           msgBox.focus();
         });
       }
