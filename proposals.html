@@ -141,7 +141,7 @@
       <h1 class="hero-title">Proposals in San Diego</h1>
       <p class="hero-subtitle">We Plan It Together. I Capture It, Unseen. Photography $650 &middot; With a Styled Picnic Scene, from $1,400</p>
       <a href="contact.html?type=Surprise%20Proposal#inquire" class="btn btn-primary">Plan My Proposal</a>
-      <p style="margin-top: var(--space-3); line-height: 1.5;"><a href="sms:+16195776091" style="color: #fff; text-decoration: underline; display: inline-block; padding: 10px 8px;">or text your date: (619) 577-6091 →</a><br><span style="font-size: .8rem;">before 3pm gets a same-day answer</span></p>
+      <p style="margin-top: var(--space-3); line-height: 1.5;"><a href="sms:+16195776091" style="color: #fff; text-decoration: underline; display: inline-block; padding: 10px 8px;">or text your date: (619) 577-6091 →</a><br><span style="font-size: .8rem;">before 3pm gets a same-day answer<br>Short notice? Photography only skips the permit wait and can book in days.</span></p>
       <p style="margin: 0;"><a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" style="color: #fff; text-decoration: underline; display: inline-block; padding: 10px 8px;">or book a free 30-minute call →</a></p>
     </div>
   </section>
@@ -164,7 +164,7 @@
       <div class="grid grid-3-desktop fade-in" style="max-width: 900px; margin: 0 auto; text-align: center;">
         <div style="padding: var(--space-5);">
           <p style="font-family: var(--font-heading); font-size: var(--text-2xl); color: var(--color-accent); margin-bottom: var(--space-2);">1. Tell Me Your Date</p>
-          <p style="color: var(--color-text-muted);">Send one inquiry with your date and your vision, and I take it from there. Everything stays discreet, and most inquiries are answered within 24 hours. Text your date before 3pm and you'll have a same-day answer on availability. Park permits need about 15 days, so for park spots reach out 3 weeks ahead to stay safe. On a tight timeline? Photography only usually books fastest, since permits are what need the lead time.</p>
+          <p style="color: var(--color-text-muted);">Send one inquiry with your date and your vision, and I take it from there. Everything stays discreet, and most inquiries are answered within 24 hours. Text your date before 3pm and you'll have a same-day answer on availability. On a tight timeline? Photography only books fastest, since no setup usually means no permit. Styled scenes in city parks need a permit (about 15 days), so for those reach out 3 weeks ahead to stay safe.</p>
         </div>
         <div style="padding: var(--space-5);">
           <p style="font-family: var(--font-heading); font-size: var(--text-2xl); color: var(--color-accent); margin-bottom: var(--space-2);">2. We Design It Quietly</p>
@@ -319,6 +319,13 @@
     <img id="lightboxImg" src="" alt="">
   </div>
 
+  <!-- Flying in -->
+  <section style="padding: var(--space-5) 0;">
+    <div class="container">
+      <p style="margin: 0 auto; max-width: 640px; text-align: center; color: var(--color-text-muted); font-size: .95rem;"><strong>Flying in to propose?</strong> You do not need to know San Diego. Send your travel dates and I will come back with two or three spots, sunset timing, and parking, with a rain backup built into the plan from the start.</p>
+    </div>
+  </section>
+
   <!-- Calculator -->
   <section class="section section-alt" id="estimator">
     <div class="container">
@@ -414,7 +421,6 @@
       </div>
       <p style="margin: var(--space-3) 0 0; text-align: center; font-size: .9rem; color: var(--color-text-muted);">Most inquiries answered within 24 hours &middot; <a href="sms:+16195776091" style="color: var(--color-accent); text-decoration: underline;">text your date before 3pm for a same-day answer</a> &middot; <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" style="color: var(--color-accent); text-decoration: underline;">book a free 30-minute call</a></p>
       <p style="margin: var(--space-4) auto 0; max-width: 640px; text-align: center; color: var(--color-text-muted); font-size: .95rem;">Planning to ask? You are in the right place. Already said yes? Engagement sessions are $650 too: <a href="pricing.html" style="color: var(--color-accent); text-decoration: underline;">see pricing</a>.</p>
-      <p style="margin: var(--space-3) auto 0; max-width: 640px; text-align: center; color: var(--color-text-muted); font-size: .95rem;"><strong>Flying in to propose?</strong> You do not need to know San Diego. Send your travel dates and I will come back with two or three spots, sunset timing, and parking, with a rain backup built into the plan from the start.</p>
     </div>
   </section>
 
@@ -655,6 +661,9 @@
         taxEst = Math.round((setup + addonTotal) * 0.0775);
         lines += '<div><span>+ Sales tax, about 7.75% on the Hidden Picnics portion</span><span>about ' + money(taxEst) + '</span></div>';
         lines += '<div><span>+ Park permit, only if your spot needs one</span><span>$25 to $100</span></div>';
+        lines += '<div><span>Due at booking, two 50% deposits</span><span>from ' + money(Math.round((photo || 0) * 0.5 + setup * 0.5)) + '</span></div>';
+      } else {
+        lines += '<div><span>Due at booking (50% retainer)</span><span>' + money(Math.round(photo * 0.5)) + '</span></div>';
       }
 
       var exact = noSetup;
