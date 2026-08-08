@@ -508,5 +508,28 @@
       checkPhone();
     })();
   </script>
+
+<script>
+setTimeout(function(){
+  var out=[];
+  var sel=document.getElementById('inq-type');
+  var chips=document.getElementById('planChips');
+  var msg=document.getElementById('inq-message');
+  function pick(t){for(var i=0;i<sel.options.length;i++){if(sel.options[i].text===t){sel.selectedIndex=i;break;}}sel.dispatchEvent(new Event('change'));}
+  function vis(id){var e=document.getElementById(id);var w=e.closest('.form-group')||e.parentElement;return getComputedStyle(w).display!=='none';}
+  pick('Elopement');
+  out.push('ELO chips='+getComputedStyle(chips).display);
+  out.push('chip1="'+chips.querySelectorAll('.plan-chip')[0].textContent+'"');
+  out.push('planner='+vis('inq-planner'));
+  out.push('guests='+vis('inq-guests'));
+  chips.querySelectorAll('.plan-chip')[2].click();
+  out.push('fillHasPermit='+(msg.value.indexOf('the permit')>-1));
+  pick('Wedding');
+  out.push('WED chips='+getComputedStyle(chips).display+' planner='+vis('inq-planner'));
+  pick('Surprise Proposal');
+  out.push('PROP chips='+getComputedStyle(chips).display+' chip1="'+chips.querySelectorAll('.plan-chip')[0].textContent+'" guests='+vis('inq-guests'));
+  document.title=out.join(' | ');
+},700);
+</script>
 </body>
 </html>
