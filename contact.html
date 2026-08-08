@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="css/responsive.css?v=6">
 
   <link rel="icon" type="image/png" href="img/horizontal logo.png">
+  <noscript><style>.fade-in { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body class="hero-page">
   <!-- Header -->
@@ -156,11 +157,16 @@
       <p id="quickAnswer" style="text-align: center; margin: 0 auto var(--space-8);">Want an answer right now? <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" class="btn btn-outline-dark" style="margin-left: var(--space-2);">Book a Free 30-Minute Call</a></p>
       <form action="https://formsubmit.co/khrystynaskotte@gmail.com" method="POST" style="max-width: 720px; margin: 0 auto;" class="fade-in">
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="New inquiry from khrystynaskotte.com">
+        <!-- _autoresponse is intentionally absent: FormSubmit disables it whenever
+             the captcha is off, so keeping it would promise mail that never sends. -->
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_url" value="https://www.khrystynaskotte.com/contact">
+        <input type="hidden" name="_blacklist" value="seo,backlink,crypto,bitcoin,casino,loan,guest post,web design services,link building,ranking">
+        <input type="hidden" name="_subject" id="inq-subject" value="New inquiry from khrystynaskotte.com">
+        <input type="hidden" name="_replyto" id="inq-replyto" value="">
         <input type="hidden" name="_next" id="inq-next" value="https://www.khrystynaskotte.com/thanks">
-        <input type="hidden" name="_autoresponse" value="Got your note. A personal reply is on the way within 24 hours. If it's time-sensitive, text (619) 577-6091. - K.">
         <input type="hidden" name="gclid" id="inq-gclid" value="">
-        <input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off">
+        <input type="text" name="_honey" aria-hidden="true" tabindex="-1" autocomplete="off" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0;">
         <div id="planChips" style="display: none; flex-wrap: wrap; gap: 8px; margin: 0 0 var(--space-5);">
           <p style="width: 100%; margin: 0 0 4px; font-size: .85rem; color: var(--color-text-muted);">Where are you at? One tap writes the message for you.</p>
           <button type="button" class="plan-chip" aria-pressed="false" data-fill="I have a date and a spot in mind. Tell me the next step." style="font-family: var(--font-body); font-size: .85rem; min-height: 44px; padding: 10px 14px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer;">I have a date and a spot</button>
@@ -191,7 +197,7 @@
           </div>
           <div class="form-group">
             <label class="form-label" for="inq-phone">Phone *</label>
-            <input class="form-input" type="tel" id="inq-phone" name="phone" autocomplete="tel" required maxlength="20" placeholder="(619) 555-0123" title="10-digit US number, or international starting with +">
+            <input class="form-input" type="tel" id="inq-phone" name="phone" autocomplete="tel" required maxlength="32" placeholder="(619) 555-0123" title="10-digit US number, or international starting with +">
             <p style="font-size: .78rem; color: var(--color-text-muted); margin: 4px 0 0;">Your number is for texting the plan. I never call unless you ask.</p>
           </div>
           <div class="form-group">
@@ -339,6 +345,34 @@
 
         var email = get('email').toLowerCase();
         var phone = get('phone').replace(/\D/g, '');
+
+        // Reply-To explicitly, so hitting reply reaches the client and not FormSubmit.
+        var rt = document.getElementById('inq-replyto');
+        if (rt && email) rt.value = email;
+
+        // A password manager can fill a hidden input, and FormSubmit silently
+        // discards any submission whose honeypot has a value. Real bots do not
+        // run this, so clearing it here keeps the trap and drops false positives.
+        var honey = form.querySelector('[name="_honey"]');
+        if (honey) honey.value = '';
+
+        // A unique subject per lead: a constant one makes Gmail collapse every
+        // inquiry into a single thread, where new leads hide under old ones.
+        var subj = document.getElementById('inq-subject');
+        var typeEl = form.querySelector('[name="inquiry_type"]');
+        var typeTxt = typeEl && typeEl.selectedIndex > -1 ? typeEl.options[typeEl.selectedIndex].text : '';
+        if (subj) subj.value = (typeTxt && typeTxt !== 'Choose one' ? typeTxt : 'Inquiry') + ' - ' + (get('name') || 'website') + ' - khrystynaskotte.com';
+
+        // Hidden fields still submit, so a guest count typed before switching to
+        // a proposal would ride along. Disable rather than only hide.
+        ['inq-planner', 'inq-guests'].forEach(function (id) {
+          var el = document.getElementById(id);
+          if (!el) return;
+          var wrap = el.closest('.form-group') || el.parentElement;
+          if (wrap && wrap.style.display === 'none') el.disabled = true;
+        });
+        var g = document.getElementById('inq-gclid');
+        if (g && !g.value) g.disabled = true;
 
         var ud = {};
         if (email) ud.email = email;

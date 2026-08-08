@@ -33,6 +33,7 @@
   <link rel="stylesheet" href="css/responsive.css?v=6">
 
   <link rel="icon" type="image/png" href="img/horizontal logo.png">
+  <noscript><style>.fade-in { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body>
   <!-- Header -->
@@ -81,7 +82,7 @@
     <div class="container" style="max-width: 720px; text-align: center;">
       <p class="section-label">Inquiry Received</p>
       <h1 class="section-title" style="margin-bottom: var(--space-6);">Thank You!</h1>
-      <p id="thanksMsg" style="color: var(--color-text-muted); font-size: var(--text-lg); margin-bottom: var(--space-6);">Your message is in my inbox and you'll receive a personal reply within 24 hours, and for estate and resort celebrations a tailored proposal. A confirmation email is on its way to you now.</p>
+      <p id="thanksMsg" style="color: var(--color-text-muted); font-size: var(--text-lg); margin-bottom: var(--space-6);">Your message is in my inbox and you'll receive a personal reply within 24 hours, and for estate and resort celebrations a tailored proposal.</p>
       <p id="thanksChat" style="color: var(--color-text-muted); margin-bottom: var(--space-8);">Can't wait to chat? Grab a spot on my calendar and let's talk through your day.</p>
       <p id="thanksCta" style="margin-bottom: var(--space-6);">
         <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" class="btn btn-primary">Book a Free 30-Minute Call</a>
@@ -94,7 +95,7 @@
           var msg = document.getElementById('thanksMsg');
           var chat = document.getElementById('thanksChat');
           var cta = document.getElementById('thanksCta');
-          if (msg) msg.textContent = 'Your plan is in my inbox and you\'ll receive a personal reply within 24 hours. Every reply stays discreet: you approve when and how I reach out. A short confirmation email is on its way to you now.';
+          if (msg) msg.textContent = 'Your plan is in my inbox and you\'ll receive a personal reply within 24 hours. Every reply stays discreet: nothing lands in your inbox until you tell me it is safe to send, and you approve when and how I reach out.';
           if (chat) chat.textContent = 'Something time-sensitive about the plan? Text me and I\'ll see it fastest.';
           if (cta) cta.innerHTML = '<a href="sms:+16195776091" class="btn btn-primary">Text (619) 577-6091</a>';
         })();
