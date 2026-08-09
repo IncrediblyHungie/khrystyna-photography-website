@@ -46,6 +46,44 @@
     .wed-list li::before { content: "·"; position: absolute; left: 0; color: var(--color-accent, #9a7b4f); }
     .wed-fit { font-size: .85rem; color: #666; font-style: italic; margin: 0 0 var(--space-3); }
   </style>
+  <style>
+    .estate-band-list { list-style: none; padding: 0; max-width: 620px; margin: 0 auto var(--space-8); }
+    .estate-band-list li { margin-bottom: .6rem; color: rgba(255, 255, 255, .88); line-height: 1.6; }
+    .estimator { display: grid; grid-template-columns: 1fr; gap: var(--space-6); max-width: 1000px; margin: 0 auto; }
+    @media (min-width: 900px) { .estimator { grid-template-columns: 1.1fr .9fr; align-items: start; } }
+    .est-form { display: flex; flex-direction: column; gap: var(--space-6); }
+    .est-q { display: none; }
+    .est-q.est-show { display: block; animation: estFade .25s ease; }
+    @keyframes estFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    .est-label { display: block; font-family: var(--font-body); font-size: var(--text-sm); font-weight: var(--font-semibold); letter-spacing: .04em; text-transform: uppercase; color: var(--color-text); margin-bottom: var(--space-3); }
+    .est-hint { font-weight: var(--font-regular); text-transform: none; letter-spacing: 0; color: var(--color-text-muted); font-size: .8rem; }
+    .est-opts { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+    .est-opt { font-family: var(--font-body); font-size: .9rem; min-height: 44px; padding: var(--space-2) var(--space-4); display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--color-accent); background: transparent; color: var(--color-text); border-radius: var(--radius-md); cursor: pointer; transition: background .15s, color .15s; line-height: 1.2; }
+    .est-opt:hover { background: rgba(122, 132, 105, .12); }
+    .est-opt.est-active { background: var(--color-accent); color: #fff; }
+    .est-result { background: var(--color-background-alt); border: 1px solid rgba(122, 132, 105, .3); border-radius: var(--radius-md); padding: var(--space-6); position: sticky; top: 90px; }
+    .est-result-label { font-size: var(--text-sm); letter-spacing: .04em; text-transform: uppercase; color: var(--color-text-muted); margin: 0 0 var(--space-2); }
+    .est-amount { font-family: var(--font-heading); font-size: 2.4rem; color: var(--color-accent); line-height: 1.1; margin: 0 0 var(--space-2); }
+    .est-sub { font-size: .9rem; color: #444; margin: 0 0 var(--space-4); line-height: 1.5; }
+    .est-incl { list-style: none; padding: 0; margin: 0 0 var(--space-4); }
+    .est-incl li { position: relative; padding-left: 1.4rem; margin-bottom: .5rem; font-size: .9rem; color: #444; line-height: 1.45; }
+    .est-incl li::before { content: "✓"; position: absolute; left: 0; color: var(--color-accent); font-size: .85rem; }
+    .est-flag { font-size: .85rem; border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); margin-bottom: var(--space-3); line-height: 1.4; }
+    .est-flag-good { background: rgba(122, 132, 105, .16); color: #3f4a33; }
+    .est-flag-note { background: rgba(224, 168, 46, .12); color: #7a5e12; }
+    .est-compare { border-top: 1px dashed rgba(122,132,105,.4); padding-top: var(--space-3); margin-bottom: var(--space-4); font-size: .88rem; color: #444; }
+    .est-compare strong { color: var(--color-accent); }
+    .est-disclaimer { font-size: .78rem; color: #777; font-style: italic; margin: var(--space-3) 0 var(--space-4); line-height: 1.45; }
+    .est-result .btn { display: block; width: 100%; text-align: center; }
+    .est-placeholder { color: var(--color-text-muted); font-size: .95rem; line-height: 1.6; }
+    .est-total { font-size: .95rem; color: var(--color-text); margin: var(--space-3) 0 var(--space-2); padding-top: var(--space-3); border-top: 1px dashed rgba(122,132,105,.4); }
+    .est-total strong { color: var(--color-accent); font-size: 1.1rem; font-family: var(--font-heading); }
+    .est-rangenote { font-size: .78rem; color: #777; margin: 0 0 var(--space-3); line-height: 1.4; }
+    .est-delivery { font-size: .82rem; color: #444; margin: 0 0 var(--space-3); }
+    .est-signature { border: 1px solid rgba(122,132,105,.45); border-radius: var(--radius-sm); padding: var(--space-3) var(--space-4); margin: var(--space-3) 0; background: rgba(122,132,105,.07); }
+    .est-sig-title { font-family: var(--font-body); font-weight: var(--font-semibold); font-size: .88rem; color: var(--color-accent); margin: 0 0 var(--space-2); letter-spacing: .02em; }
+    .est-sig-note { font-size: .8rem; color: #555; margin: var(--space-2) 0 0; font-style: italic; line-height: 1.45; }
+  </style>
   <noscript><style>.fade-in { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body class="hero-page">
@@ -300,6 +338,342 @@
       </p>
     </div>
   </section>
+
+  <!-- Price Estimator -->
+  <section class="section" id="estimator">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Quick Estimate</p>
+        <h2 class="section-title">Estimate Your Wedding</h2>
+      </div>
+      <p class="price-note">A starting estimate in a few taps, no email required. Your final quote just confirms the details, it won't jump categories. Full package details are on the <a href="pricing.html#packages" style="color: var(--color-accent); font-weight: var(--font-semibold);">pricing page</a>.</p>
+
+      <div class="estimator fade-in">
+        <div class="est-form">
+
+
+          <div class="est-q" data-q="hoursWedding">
+            <span class="est-label">How much coverage?</span>
+            <div class="est-opts" data-group="hours">
+              <button type="button" class="est-opt" data-value="4">4 hours</button>
+              <button type="button" class="est-opt" data-value="6">6 hours</button>
+              <button type="button" class="est-opt" data-value="8">8 hours (full day)</button>
+              <button type="button" class="est-opt" data-value="8plus">8+ hours</button>
+            </div>
+          </div>
+
+
+          <div class="est-q" data-q="media">
+            <span class="est-label">Photo, video, or both?</span>
+            <div class="est-opts" data-group="media">
+              <button type="button" class="est-opt" data-value="photo">Photo</button>
+              <button type="button" class="est-opt" data-value="video">Video</button>
+              <button type="button" class="est-opt" data-value="both">Photo + Video</button>
+            </div>
+          </div>
+
+          <div class="est-q" data-q="guests">
+            <span class="est-label">Guest count <span class="est-hint">(a second photographer joins for larger weddings)</span></span>
+            <div class="est-opts" data-group="guests">
+              <button type="button" class="est-opt" data-value="under">Up to 60</button>
+              <button type="button" class="est-opt" data-value="over">Over 60</button>
+            </div>
+          </div>
+
+          <div class="est-q" data-q="venue">
+            <span class="est-label">Where's your venue?</span>
+            <div class="est-opts" data-group="venue">
+              <button type="button" class="est-opt" data-value="sd">San Diego County</button>
+              <button type="button" class="est-opt" data-value="temecula">Temecula</button>
+              <button type="button" class="est-opt" data-value="outside">Outside the area</button>
+            </div>
+          </div>
+
+          <div class="est-q" data-q="addons">
+            <span class="est-label">Add-ons? <span class="est-hint">(optional, quoted with your date)</span></span>
+            <div class="est-opts" data-group="addons" data-multi="true">
+              <button type="button" class="est-opt" data-value="Extra photographer">Extra photographer</button>
+              <button type="button" class="est-opt" data-value="Drone coverage">Drone coverage</button>
+              <button type="button" class="est-opt" data-value="Heirloom album">Heirloom album</button>
+              <button type="button" class="est-opt" data-value="Rush delivery">Rush delivery</button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="est-result" id="estResult" aria-live="polite">
+          <p class="est-placeholder">Answer a couple of questions and your estimated price will appear here.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    var root = document.getElementById('estimator');
+    if (!root) return;
+    var resultEl = document.getElementById('estResult');
+
+    // Real pricing tables
+    var WED_PHOTO = { 4: 2200, 6: 3000, 8: 3800 };
+    var WED_FILM  = { 4: 1300, 6: 1800, 8: 2300 };
+    var ELO_PHOTO = { 1: 650, 2: 900, 3: 1200 };
+    var ELO_FILM  = { 1: 700, 2: 1000, 3: 1300 };
+    var GUEST_ADD = 1000;      // over 60, once per booking, includes 2nd shooter
+    var SIGNATURE = 5000;      // photo + film, full day, no guest add
+
+    var state = { occasion: 'wedding', hours: null, extended: false, media: null, guests: null, venue: null, portraitType: null, addons: [] };
+    var scrolled = false; // scroll result into view once, on first complete estimate (mobile)
+
+    function money(n) { return '$' + n.toLocaleString('en-US'); }
+    // Tight upper bound (~12%) for variable extras like extra locations or albums,
+    // rounded to the nearest $100 (Math.round avoids float artifacts like 5600.0000001).
+    function tightHigh(b) { return Math.round(b * 1.12 / 100) * 100; }
+
+    // Which questions are visible for the current occasion
+    function visibleQuestions() {
+      var o = state.occasion;
+      if (o === 'wedding')    return ['occasion', 'hoursWedding', 'media', 'guests', 'venue', 'addons'];
+      if (o === 'elopement')  return ['occasion', 'hoursElopement', 'media', 'venue', 'addons'];
+      if (o === 'engagement') return ['occasion', 'media', 'addons'];
+      if (o === 'portrait')   return ['occasion', 'portraitType', 'venue', 'addons'];
+      if (o === 'estate')     return ['occasion'];
+      return ['occasion'];
+    }
+
+    function syncVisibility() {
+      var vis = visibleQuestions();
+      root.querySelectorAll('.est-q').forEach(function (q) {
+        q.classList.toggle('est-show', vis.indexOf(q.getAttribute('data-q')) !== -1);
+      });
+    }
+
+    function venueLine() {
+      if (state.venue === 'sd' || state.venue === 'temecula') {
+        return '<div class="est-flag est-flag-good">✓ No travel fee within San Diego County or Temecula.</div>';
+      }
+      if (state.venue === 'outside') {
+        return '<div class="est-flag est-flag-note">Outside the area: your package price above is exact for your tier. Your travel cost is quoted in writing within 24 hours, one flat line item that never changes after booking.</div>';
+      }
+      return '';
+    }
+
+    // Real add-on pricing
+    function addonCost(name) {
+      var h = state.hours || 1;
+      if (name === 'Extra photographer') { var ep = Math.min(150 * h, 1000); return { amt: ep, label: 'Extra photographer, +' + money(ep) + ' ($150/hr, capped at $1,000)' }; }
+      if (name === 'Drone coverage')     return { amt: 300, label: 'Drone coverage, +' + money(300) };
+      if (name === 'Heirloom album')     return { amt: 250, label: 'Heirloom album, from +' + money(250), from: true };
+      if (name === 'Rush delivery')      { var r = (state.occasion === 'wedding') ? 400 : 200; return { amt: r, label: 'Rush delivery (3–4 days), +' + money(r) }; }
+      return { amt: 0, label: name };
+    }
+    function addonBlock() {
+      if (!state.addons.length) return { total: 0, from: false, html: '' };
+      var total = 0, from = false, lines = [];
+      state.addons.forEach(function (n) { var c = addonCost(n); total += c.amt; if (c.from) from = true; lines.push(c.label); });
+      var html = '<div class="est-compare"><strong>Your add-ons</strong><br>' + lines.join('<br>') + '</div>';
+      return { total: total, from: from, html: html };
+    }
+
+    function inclList(items) {
+      return '<ul class="est-incl"><li>' + items.join('</li><li>') + '</li></ul>';
+    }
+
+    function deliveryLine() {
+      var rush = (state.occasion === 'wedding') ? 400 : 200;
+      return '<p class="est-delivery">Delivered in 2–3 weeks. Need it sooner? Rush delivery from +' + money(rush) + '.</p>';
+    }
+
+    // Signature step-up: show only what's DIFFERENT from the a-la-carte card above,
+    // so it reads as an upgrade, not a duplicate.
+    function signatureCard(alacarte, wh) {
+      var moreHrs = (wh < 8) ? ('+' + (8 - wh) + ' more hour' + (8 - wh > 1 ? 's' : '') + ' (full 8-hour day)') : '8 hours (full day)';
+      var vs = 'About ' + money(alacarte) + ' a la carte' + (alacarte > SIGNATURE ? ', so Signature saves you ' + money(alacarte - SIGNATURE) : '') + '.';
+      return '<div class="est-signature"><p class="est-sig-title">Step up: <span style="white-space:nowrap;">Signature · $5,000 flat</span></p>' +
+        inclList([moreHrs + ' of coverage', 'Second photographer included', 'No guest-count fee']) +
+        '<p class="est-sig-note">' + vs + '</p></div>';
+    }
+
+    function maybeScroll() {
+      if (!scrolled && window.innerWidth < 900) {
+        scrolled = true;
+        try { resultEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+      }
+    }
+
+    function render(html) { resultEl.innerHTML = html; }
+
+    function cta() {
+      return '<a href="contact.html?type=Wedding#inquire" class="btn btn-primary">Check Your Date</a>';
+    }
+    function disclaimer() {
+      return '<p class="est-disclaimer">A starting estimate from current collection pricing. Your final quote confirms the details, it won’t jump categories.</p>';
+    }
+
+    // Renders the result card: a clean base price, then add-ons itemized into a
+    // clearly-labeled total, a plain-language range explainer, and delivery info.
+    function finalize(d) {
+      var ab = addonBlock();
+      var isRange = !!(d.range || d.low !== d.high);
+      var baseAmount = isRange ? (money(d.low) + ' – ' + money(d.high)) : ((d.prefix || '') + money(d.low));
+
+      var html =
+        '<p class="est-result-label">' + d.label + '</p>' +
+        '<p class="est-amount">' + baseAmount + '</p>' +
+        (d.sub ? '<p class="est-sub">' + d.sub + '</p>' : '') +
+        inclList(d.incl) +
+        (d.flags || []).join('') +
+        ab.html;
+
+      if (ab.total > 0) {
+        var tLo = d.low + ab.total, tHi = d.high + ab.total;
+        var tAmount = isRange ? (money(tLo) + ' – ' + money(tHi)) : ((ab.from ? 'From ' : (d.prefix || '')) + money(tLo));
+        html += '<div class="est-total">Estimated total: <strong>' + tAmount + '</strong></div>';
+      }
+      // Keep the price-to-CTA path tight: disclaimer + button come right after the
+      // price and value. Reference details (range explainer, delivery) sit below.
+      html += disclaimer() + cta();
+      if (isRange) {
+        html += '<p class="est-rangenote">Where you land in the range depends on extra hours and added locations.</p>';
+      }
+      html += deliveryLine();
+      render(html);
+      maybeScroll();
+    }
+
+    function compute() {
+      var s = state;
+
+      // Estate: never compute a number
+      if (s.occasion === 'estate') {
+        render(
+          '<p class="est-result-label">Estate &amp; Luxury</p>' +
+          '<p class="est-amount">From $8,500</p>' +
+          '<p class="est-sub">Estate weddings are custom designed and quoted individually, after we talk through your venue, timeline, and film.</p>' +
+          inclList(['Full-day photography and cinematic film', 'Second photographer and planning coordination', 'Complimentary engagement session and heirloom album', 'Unlimited locations, discreet coverage']) +
+          '<a href="#estate" class="btn btn-outline-dark" style="display:block;width:100%;text-align:center;margin-bottom:var(--space-3);">See the Estate Collection</a>' +
+          cta()
+        );
+        maybeScroll();
+        return;
+      }
+
+      // Engagement / Proposal
+      if (s.occasion === 'engagement') {
+        if (!s.media) return placeholder();
+        if (s.media === 'photo') return finalize({ label: 'Proposal / Engagement · Photo', low: 650, high: 650, incl: ['1 hour of coverage', '100+ color-edited photos', 'Light retouching on every photo', 'Private online gallery'] });
+        if (s.media === 'video') return finalize({ label: 'Proposal / Engagement · Film', low: 500, high: 500, incl: ['1 hour of coverage', 'Cinematic highlight video (~1 min)', 'Vertical clips for sharing', 'Private online gallery'] });
+        return finalize({ label: 'Proposal / Engagement · Photo + Film', low: 2150, high: 2150, sub: 'A second shooter joins so both are captured at once.', incl: ['Photo and film captured together', '1 hour of coverage', '100+ photos + highlight video', 'Private online gallery'] });
+      }
+
+      // Portraits (couple / family / maternity, photography only)
+      if (s.occasion === 'portrait') {
+        if (!s.portraitType || !s.venue) return placeholder();
+        var retouch = (s.portraitType === 'Maternity') ? 'Light retouching of skin and small details' : 'Light retouching on every photo';
+        return finalize({
+          label: 'Portraits · ' + s.portraitType,
+          low: 500, high: 500,
+          incl: ['1 hour of coverage', '100+ color-edited photos', retouch, 'Help with outfit ideas and creative direction', 'Private online gallery'],
+          flags: [venueLine()]
+        });
+      }
+
+      // Elopement
+      if (s.occasion === 'elopement') {
+        if (!s.hours || !s.media || !s.venue) return placeholder();
+        var h = s.hours, hrs = h + ' hour' + (h > 1 ? 's' : '') + ' of coverage';
+        if (s.media === 'photo') return finalize({ label: 'Elopement · Photo', low: ELO_PHOTO[h], high: ELO_PHOTO[h], incl: [hrs, '100+ color-edited photos', 'Up to 15 guests welcome', 'Private online gallery'], flags: [venueLine()] });
+        if (s.media === 'video') return finalize({ label: 'Elopement · Film', low: ELO_FILM[h], high: ELO_FILM[h], incl: [hrs, 'Cinematic highlight video', 'Vertical clips for sharing', 'Up to 15 guests welcome'], flags: [venueLine()] });
+        return finalize({ label: 'Elopement · Photo + Film', low: 1350, high: 1350, prefix: 'From ', sub: 'Photo and video together, from $1,350 for one hour of each. Longer coverage is quoted with your date.', incl: ['Photo and film captured together', '100+ photos + highlight video', 'Up to 15 guests welcome', 'Private online gallery'], flags: [venueLine()] });
+      }
+
+      // Wedding
+      if (s.occasion === 'wedding') {
+        if (!s.hours || !s.media || !s.guests || !s.venue) return placeholder();
+        var wh = s.hours, ext = s.extended, addFee = (s.guests === 'over') ? GUEST_ADD : 0;
+        var hoursLabel = ext ? '8+ hours' : (wh + ' hours');
+        var overNote = (s.guests === 'over')
+          ? '<div class="est-flag est-flag-good">✓ Second photographer included for your over-60 guest count.</div>'
+          : '';
+        var extNote = ext ? '<div class="est-flag est-flag-note">Coverage beyond 8 hours (10, 12 hours, and up) is quoted with your date.</div>' : '';
+        var wLabel, base, incl, flags;
+
+        var TIER = { 4: 'Basic', 6: 'Gold', 8: 'Premium' };
+        if (s.media === 'photo') {
+          wLabel = 'Wedding · Photography · ' + TIER[wh] + ' Collection';
+          base = WED_PHOTO[wh] + addFee;
+          incl = [hoursLabel + ' of coverage', (wh === 4 ? '400+' : wh === 6 ? '500+' : '750+') + ' color-edited photos', 'Light retouching on every photo', 'Private online gallery'];
+          flags = [overNote, venueLine()];
+        } else if (s.media === 'video') {
+          wLabel = 'Wedding · Film · ' + TIER[wh];
+          base = WED_FILM[wh] + addFee;
+          incl = [hoursLabel + ' of coverage', 'Cinematic highlight film', 'Ceremony + speeches edit', 'Private online gallery'];
+          flags = [overNote, venueLine()];
+        } else {
+          var alacarte = WED_PHOTO[wh] + WED_FILM[wh] + addFee;
+          if (SIGNATURE <= alacarte) {
+            // Signature is the value pick, so make it the headline (no confusing a-la-carte guest fee).
+            wLabel = 'Wedding · Signature (Photo + Film)';
+            base = SIGNATURE;
+            incl = ['8 hours (full day) of coverage', 'Photography + cinematic film', 'Second photographer included', '750+ photos + highlight film', 'No guest-count fee'];
+            var save = alacarte - SIGNATURE;
+            flags = ['<div class="est-flag est-flag-good">✓ Flat ' + money(SIGNATURE) + ' vs about ' + money(alacarte) + ' a la carte' + (save > 0 ? ', so you save ' + money(save) : '') + '. Second photographer and any guest fee already included.</div>', venueLine()];
+          } else {
+            wLabel = 'Wedding · Photo + Film';
+            base = alacarte;
+            incl = ['Photography + cinematic film', hoursLabel + ' of coverage', (wh === 4 ? '400+' : wh === 6 ? '500+' : '750+') + ' photos + highlight film', 'Private online gallery'];
+            flags = [overNote, signatureCard(alacarte, wh), venueLine()];
+          }
+        }
+
+        if (ext) flags.push(extNote);
+        return finalize(ext
+          ? { label: wLabel, low: base, high: base, range: false, prefix: 'From ', incl: incl, flags: flags }
+          : { label: wLabel, low: base, high: tightHigh(base), range: true, incl: incl, flags: flags });
+      }
+
+      placeholder();
+    }
+
+    function placeholder() {
+      render('<p class="est-placeholder">Answer a couple of questions and your estimated price will appear here.</p>');
+    }
+
+    // Event handling
+    root.addEventListener('click', function (e) {
+      var btn = e.target.closest('.est-opt');
+      if (!btn) return;
+      var wrap = btn.closest('.est-opts');
+      var group = wrap.getAttribute('data-group');
+      var multi = wrap.getAttribute('data-multi') === 'true';
+      var val = btn.getAttribute('data-value');
+
+      if (multi) {
+        btn.classList.toggle('est-active');
+        var i = state.addons.indexOf(val);
+        if (i === -1) state.addons.push(val); else state.addons.splice(i, 1);
+      } else {
+        wrap.querySelectorAll('.est-opt').forEach(function (b) { b.classList.remove('est-active'); });
+        btn.classList.add('est-active');
+
+        if (group === 'occasion') {
+          // reset dependent answers when occasion changes
+          state = { occasion: val, hours: null, extended: false, media: null, guests: null, venue: null, portraitType: null, addons: [] };
+          scrolled = false;
+          root.querySelectorAll('.est-opts:not([data-group="occasion"]) .est-opt').forEach(function (b) { b.classList.remove('est-active'); });
+          syncVisibility();
+        } else if (group === 'hours') {
+          state.extended = (val === '8plus');
+          state.hours = state.extended ? 8 : parseInt(val, 10);
+        } else {
+          state[group] = val;
+        }
+      }
+      compute();
+    });
+
+    syncVisibility();
+  })();
+  </script>
 
   <!-- Testimonials -->
   <section class="section">
