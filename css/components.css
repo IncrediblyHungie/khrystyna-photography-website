@@ -1054,3 +1054,4 @@ body:not(.home):not(.hero-page) .header .menu-toggle span,
 .pricing-strip-link:hover {
   color: var(--color-accent-hover);
 }
+:target { scroll-margin-top: 96px; }

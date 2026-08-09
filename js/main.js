@@ -259,6 +259,17 @@
   }
 
   // Initialize everything
+  function initHashLanding() {
+    // Ad final URLs land on anchors (#courthouse, #estimator). The browser
+    // scrolls before lazy images resolve their heights, so the target drifts
+    // down and the visitor lands short. Re-scroll once everything has loaded.
+    if (!window.location.hash) return;
+    window.addEventListener('load', () => {
+      const target = document.querySelector(window.location.hash);
+      if (target) target.scrollIntoView();
+    });
+  }
+
   function init() {
     // Event listeners
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -293,6 +304,7 @@
     initVideoObserver();
     initGclidCapture();
     initConversionTracking();
+    initHashLanding();
   }
 
   // Run when DOM is ready
