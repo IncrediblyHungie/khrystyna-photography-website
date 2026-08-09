@@ -216,9 +216,15 @@
   function initGclidCapture() {
     try {
       const params = new URLSearchParams(window.location.search);
-      const gclid = params.get('gclid');
-      if (gclid) {
-        localStorage.setItem('ks_gclid', JSON.stringify({ value: gclid, ts: Date.now() }));
+      // iOS clicks from Google apps send wbraid/gbraid instead of gclid, so
+      // capture whichever arrives; without this those leads lose attribution.
+      let id = null;
+      for (const key of ['gclid', 'wbraid', 'gbraid']) {
+        const v = params.get(key);
+        if (v) { id = { value: v, kind: key, ts: Date.now() }; break; }
+      }
+      if (id) {
+        localStorage.setItem('ks_gclid', JSON.stringify(id));
       } else {
         const stored = JSON.parse(localStorage.getItem('ks_gclid') || 'null');
         if (stored && Date.now() - stored.ts > 90 * 24 * 60 * 60 * 1000) {

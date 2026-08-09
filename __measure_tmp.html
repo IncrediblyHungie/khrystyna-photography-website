@@ -772,5 +772,25 @@
   })();
   </script>
   <script src="js/main.js?v=6"></script>
-</body>
+<script>
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    var out = [];
+    out.push('DOC_HEIGHT ' + document.documentElement.scrollHeight);
+    out.push('VIEWPORT ' + window.innerWidth + 'x' + window.innerHeight);
+    var VH = window.innerHeight;
+    var nodes = document.querySelectorAll('body > section, body > footer, body > div.mobile-book-bar');
+    nodes.forEach(function(n, i){
+      var r = n.getBoundingClientRect();
+      var top = Math.round(r.top + window.scrollY);
+      var h = Math.round(r.height);
+      var head = n.querySelector('h1,h2,.section-label,p');
+      var label = n.id ? '#'+n.id : (n.className || n.tagName);
+      var text = head ? head.textContent.trim().slice(0,55) : '';
+      out.push(i + ' | top=' + top + ' | h=' + h + ' | end=' + (top+h) + ' | startFold=' + (top/VH).toFixed(2) + ' | ' + label + ' | ' + text);
+    });
+    parent.postMessage(out.join('\n'), '*');
+  }, 3000);
+});
+</script></body>
 </html>

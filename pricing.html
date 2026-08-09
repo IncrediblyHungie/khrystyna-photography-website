@@ -154,12 +154,20 @@
     </div>
   </section>
 
+
+  <!-- Testimonial -->
+  <section style="padding: var(--space-6) 0 0;">
+    <div class="container">
+      <blockquote class="fade-in" style="max-width: 640px; margin: 0 auto; text-align: center; font-style: italic; color: #444;">"The photos have such a beautiful cinematic and poetic feel, and they captured the emotions and atmosphere of our wedding so well. She made us feel comfortable, captured so many genuine moments, and delivered a gallery we'll cherish for years to come."<span style="display: block; margin-top: var(--space-2); font-style: normal; font-weight: var(--font-semibold);">Zachary B. &middot; Wedding</span></blockquote>
+    </div>
+  </section>
+
   <!-- Price Estimator -->
   <section class="section" id="estimator">
     <div class="container">
       <div class="section-header">
         <p class="section-label">Quick Estimate</p>
-        <h2 class="section-title">Estimate Your Investment</h2>
+        <h2 class="section-title">Estimate Your Price</h2>
       </div>
       <p class="price-note">A starting estimate in a few taps, no email required. Your final quote just confirms the details, it won't jump categories. Full package details are <a href="#packages" style="color: var(--color-accent); font-weight: var(--font-semibold);">right below</a>.</p>
 
@@ -242,7 +250,7 @@
         </div>
 
         <aside class="est-result" id="estResult" aria-live="polite">
-          <p class="est-placeholder">Answer a couple of questions and your estimated investment will appear here.</p>
+          <p class="est-placeholder">Answer a couple of questions and your estimated price will appear here.</p>
         </aside>
       </div>
     </div>
@@ -252,7 +260,7 @@
   <section class="section" id="packages">
     <div class="container">
       <div class="section-header">
-        <p class="section-label">Investment</p>
+        <p class="section-label">Pricing</p>
         <h2 class="section-title">Photography</h2>
       </div>
       <p class="price-note">Every session includes my full attention, honest guidance while we plan, and a private online gallery when it's done.</p>
@@ -424,7 +432,7 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-header">
-        <p class="section-label">Investment</p>
+        <p class="section-label">Pricing</p>
         <h2 class="section-title">Videography</h2>
       </div>
       <p class="price-note">Documentary-style coverage that captures the day as it happens, edited into a film you'll actually want to rewatch.</p>
@@ -499,7 +507,7 @@
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <p class="section-label">Investment</p>
+        <p class="section-label">Pricing</p>
         <h2 class="section-title">Portraits</h2>
       </div>
       <p class="price-note">Relaxed, natural sessions for couples, families, and expecting mothers. Photography only.</p>
@@ -839,7 +847,7 @@
     }
 
     function placeholder() {
-      render('<p class="est-placeholder">Answer a couple of questions and your estimated investment will appear here.</p>');
+      render('<p class="est-placeholder">Answer a couple of questions and your estimated price will appear here.</p>');
     }
 
     // Event handling
@@ -878,6 +886,6 @@
     syncVisibility();
   })();
   </script>
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=6"></script>
 </body>
 </html>

@@ -1,0 +1,10 @@
+<!DOCTYPE html><html><head><style>html,body{margin:0;background:#fff}iframe{width:390px;height:844px;border:0;display:block}</style></head><body>
+<pre id="R" style="position:fixed;bottom:0;right:0;z-index:99;background:#ff0">?</pre>
+<iframe id="f" src="proposals.html"></iframe>
+<script>
+var y=parseInt((location.search.match(/y=(\d+)/)||[0,0])[1],10);
+var f=document.getElementById('f');
+function go(){ try{ f.contentWindow.scrollTo(0,y); document.getElementById('R').textContent='sy='+f.contentWindow.scrollY+' dh='+f.contentDocument.documentElement.scrollHeight; }catch(e){ document.getElementById('R').textContent='ERR '+e; } }
+f.addEventListener('load', function(){ go(); setTimeout(go,500); setTimeout(go,1500); setTimeout(go,3000); });
+</script>
+</body></html>

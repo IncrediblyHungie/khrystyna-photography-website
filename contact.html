@@ -165,6 +165,7 @@
         <h2 class="section-title">Tell Me About Your Day</h2>
       </div>
       <p style="text-align: center; max-width: 640px; margin: 0 auto var(--space-4); color: var(--color-text-muted);">Share a few details below and you'll receive a personal reply, and for estate and resort celebrations a tailored proposal, within 24 hours.</p>
+      <blockquote class="fade-in" style="max-width: 560px; margin: 0 auto var(--space-6); text-align: center; font-style: italic; color: #444; font-size: var(--text-sm);">"She was very kind and professional and helped my husband and I feel relaxed. If you are considering booking her, don't give it a second thought!"<span style="display: block; margin-top: var(--space-2); font-style: normal; font-weight: var(--font-semibold);">Diana V. &middot; Wedding</span></blockquote>
       <p id="quickAnswer" style="text-align: center; margin: 0 auto var(--space-8);">Want an answer right now? <a href="https://calendly.com/khrystynaskotte/30min" target="_blank" rel="noopener" class="btn btn-outline-dark" style="margin-left: var(--space-2);">Book a Free 30-Minute Call</a></p>
       <form action="https://formsubmit.co/khrystynaskotte@gmail.com" method="POST" style="max-width: 720px; margin: 0 auto;" class="fade-in">
         <input type="hidden" name="_captcha" value="false">
@@ -334,17 +335,21 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=6"></script>
   <script>
     (function () {
       var form = document.querySelector('form[action*="formsubmit.co"]');
       if (!form) return;
 
-      // Populate the hidden gclid field from the value stored by main.js
+      // Populate the hidden click-id field from the value stored by main.js.
+      // The field name follows the id kind (gclid, wbraid, or gbraid) so the
+      // lead email says which one it is.
       try {
         var stored = JSON.parse(localStorage.getItem('ks_gclid') || 'null');
         if (stored && stored.value) {
-          document.getElementById('inq-gclid').value = stored.value;
+          var idField = document.getElementById('inq-gclid');
+          idField.value = stored.value;
+          if (stored.kind && stored.kind !== 'gclid') idField.name = stored.kind;
         }
       } catch (e) {}
 
