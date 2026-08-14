@@ -108,11 +108,13 @@ image is nearby without tracking who owns it.
 
 ### Solution
 
-- **Hidden Picnics imagery appears in exactly two places** on
-  `proposals.html`: the "The Styled Scene" section and the "Setups by
-  Hidden Picnics" gallery. Nowhere else on the site.
-- **Everything else is Khrystyna's photography**, including the Proposals hero,
-  the `og:image`, the closing CTA background, and the Engagements cross-link.
+- **Hidden Picnics imagery no longer appears anywhere on the site.** The
+  "Styled Scene" and "Setups by Hidden Picnics" sections were removed from
+  `proposals.html` on 2026-08-09 at Petey's request, and `img/picnics/` was
+  deleted with them. The picnic *product* is still sold through the
+  estimator, the package cards, and the FAQ; only the showcase imagery is
+  gone. Do not re-add HP imagery without being asked.
+- **Everything on the site is Khrystyna's photography.**
 - **Never claim Khrystyna shot the HP setups.** The gallery label is plainly
   "Setups by Hidden Picnics" with no photographer attribution.
 - The pricing estimator has a photography-only path that returns exactly $650
